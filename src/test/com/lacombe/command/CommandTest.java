@@ -43,7 +43,7 @@ class CommandTestShould {
     }
 
     @Test
-    public void move_forward_the_rover(){
+    public void move_forward_east_the_rover(){
         char[] moves = new char[]{'f'};
         Command command = new Command(moves);
         Position position = new Position(0,0,'E');
@@ -51,6 +51,20 @@ class CommandTestShould {
         Rover rover = new Rover();
         rover.move(position, command);
 
+        assertEquals("0:1:E", position.toString());
+
+    }
+
+    @Test
+    public void move_forward_west_the_rover(){
+        char[] moves = new char[]{'f'};
+        Command command = new Command(moves);
+        Position position = new Position(1,1,'W');
+
+        Rover rover = new Rover();
+        rover.move(position, command);
+
+        assertEquals("1:0:W", position.toString());
 
     }
 
