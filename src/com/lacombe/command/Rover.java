@@ -7,14 +7,19 @@ import src.com.lacombe.model.Position;
 
 public class Rover {
     Position currentPosition;
+    Grid grid;
 
-    public void move(Grid grid, Position startingPosition, Command command) {
+    public  Rover(Grid grid){
+        this.grid = grid;
+    }
+
+    public void move(Position startingPosition, Command command) {
         if(startingPosition == null || grid.getCellByHisCoordinate(startingPosition) == null)
             throw new NullPointerException("You are try to go out of the board : " + startingPosition);
         if(command.size()  < 1)
             return;
         currentPosition = getMove(startingPosition, command.getMove(0));
-        move(grid, currentPosition, command.skip(1));
+        move(currentPosition, command.skip(1));
     }
 
     public Position getMove(Position position, Move move){

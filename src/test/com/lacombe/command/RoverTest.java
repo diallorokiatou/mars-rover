@@ -22,7 +22,6 @@ class RoverTestShould {
         assertEquals("0:1:W", rover_starting_position_abscissa_0_ordinate_1_direction_W.toString());
         assertEquals("1:0:N", rover_starting_position_abscissa_1_ordinate_0_direction_N.toString());
         assertEquals("1:1:S", rover_starting_position_abscissa_1_ordinate_1_direction_S.toString());
-
     }
 
     @Test
@@ -32,8 +31,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'E');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:2:E", rover.getCurrentPosition());
     }
@@ -45,8 +44,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'W');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:0:W", rover.getCurrentPosition());
     }
@@ -58,8 +57,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'S');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("0:1:S", rover.getCurrentPosition());
     }
@@ -71,8 +70,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'N');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("2:1:N", rover.getCurrentPosition());
     }
@@ -84,8 +83,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'E');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:0:E", rover.getCurrentPosition());
     }
@@ -97,8 +96,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'W');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:2:W", rover.getCurrentPosition());
     }
@@ -110,8 +109,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'S');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("2:1:S", rover.getCurrentPosition());
     }
@@ -123,8 +122,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'N');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("0:1:N", rover.getCurrentPosition());
     }
@@ -136,8 +135,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'W');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:1:S", rover.getCurrentPosition());
     }
@@ -149,8 +148,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'S');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:1:E", rover.getCurrentPosition());
     }
@@ -162,8 +161,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'N');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:1:W", rover.getCurrentPosition());
     }
@@ -175,8 +174,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'E');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:1:S", rover.getCurrentPosition());
     }
@@ -188,8 +187,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'W');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:1:N", rover.getCurrentPosition());
     }
@@ -201,8 +200,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'S');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:1:W", rover.getCurrentPosition());
     }
@@ -214,8 +213,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'N');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("1:1:E", rover.getCurrentPosition());
     }
@@ -227,8 +226,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'N');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("2:0:N", rover.getCurrentPosition());
     }
@@ -240,8 +239,8 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'N');
 
-        Rover rover = new Rover();
-        rover.move(grid, position, command);
+        Rover rover = new Rover(grid);
+        rover.move(position, command);
 
         assertEquals("2:0:N", rover.getCurrentPosition());
     }
@@ -253,10 +252,10 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(3, 2, 'N');
 
-        Rover rover = new Rover();
+        Rover rover = new Rover(grid);
 
         Throwable exception = assertThrows(NullPointerException.class,
-                () -> {rover.move(grid, position, command);});
+                () -> {rover.move(position, command);});
     }
 
     @Test
@@ -266,10 +265,10 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'N');
 
-        Rover rover = new Rover();
+        Rover rover = new Rover(grid);
 
         Throwable exception = assertThrows(NullPointerException.class,
-                () -> {rover.move(grid, position, command);});
+                () -> {rover.move(position, command);});
         assertEquals("2:1:N", rover.getCurrentPosition());
     }
 
