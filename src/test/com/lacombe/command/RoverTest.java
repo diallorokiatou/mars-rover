@@ -6,11 +6,10 @@ import src.com.lacombe.model.Command;
 import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Position;
 
-import java.security.InvalidParameterException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class CommandTestShould {
+class RoverTestShould {
 
     @Test
     public void init_the_rover_starting_position() {
@@ -24,21 +23,6 @@ class CommandTestShould {
         assertEquals("1:0:N", rover_starting_position_abscissa_1_ordinate_0_direction_N.toString());
         assertEquals("1:1:S", rover_starting_position_abscissa_1_ordinate_1_direction_S.toString());
 
-    }
-
-    @Test
-    public void throw_an_error_when_invalid_char_is_add() {
-        char[] moves = new char[]{'a'};
-
-        Throwable exception = assertThrows(InvalidParameterException.class,
-                () -> {new Command(moves);});
-    }
-
-    @Test
-    public void receive_an_array_of_valid_character() {
-        char[] moves = new char[]{'f', 'b', 'l', 'r'};
-
-        assertDoesNotThrow(() -> new Command(moves));
     }
 
     @Test
@@ -94,7 +78,7 @@ class CommandTestShould {
     }
 
     @Test
-    public void move__when_direction_is_East() {
+    public void move_when_direction_is_East() {
         Grid grid = new Grid(10);
         char[] moves = new char[]{'b'};
         Command command = new Command(moves);
