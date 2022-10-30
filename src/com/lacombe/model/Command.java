@@ -1,8 +1,6 @@
-package src.com.lacombe.command;
+package src.com.lacombe.model;
 
 import src.com.lacombe.Enum.Move;
-import src.com.lacombe.model.Coordinate;
-import src.com.lacombe.model.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +16,22 @@ public class Command {
         }
     }
 
+    public Command(List<Move> commands) {
+        this.commands = commands;
+    }
+
     public List<Move> getCommands() {
         return commands;
+    }
+
+    public Move getMove(int i){
+       return commands.get(i);
+    }
+    public int size() {
+        return commands.size();
+    }
+
+    public Command skip(int n) {
+        return new Command(commands.stream().skip(n).toList());
     }
 }

@@ -3,34 +3,33 @@ package src.com.lacombe.model;
 import java.util.Objects;
 
 public class Coordinate {
-    int x;
-    int y;
+    int abscissa;
+    int ordonna;
 
     public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.abscissa = x;
+        this.ordonna = y;
     }
 
-    public void moveForwardEast(){
-        y += 1;
+    public void incrementOrdonna() {
+        ordonna += 1;
     }
 
-    public void moveForwardWest(){
-        y -= 1;
+    public void decrementOrdonna() {
+        ordonna -= 1;
     }
 
-    public void moveForwardNorth(){
-        x += 1;
+    public void incrementAbscissa() {
+        abscissa += 1;
     }
 
-    public void moveForwardSouth(){
-        x -= 1;
+    public void decrementAbscissa() {
+        abscissa -= 1;
     }
-
 
     @Override
     public String toString() {
-        return x + ":" +  y;
+        return abscissa + ":" + ordonna;
     }
 
     @Override
@@ -38,11 +37,11 @@ public class Coordinate {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Coordinate that = (Coordinate) o;
-        return x == that.x && y == that.y;
+        return abscissa == that.abscissa && ordonna == that.ordonna;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return Objects.hash(abscissa, ordonna);
     }
 }

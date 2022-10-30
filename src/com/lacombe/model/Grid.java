@@ -21,6 +21,14 @@ public class Grid {
         }
     }
 
+    public GridCell getCellByHisCoordinate(Position position) {
+        for (GridCell gridCell: gridPlate) {
+            if(gridCell.equals(position))
+                return gridCell;
+        }
+        return null;
+    }
+
     public void print() {
         for (GridCell gridCell: gridPlate) {
             System.out.println(gridCell);

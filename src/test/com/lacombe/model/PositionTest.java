@@ -1,13 +1,12 @@
 package src.test.com.lacombe.model;
 
 import org.junit.jupiter.api.Test;
-import src.com.lacombe.Enum.Direction;
-import src.com.lacombe.command.Command;
 import src.com.lacombe.model.Position;
 
 import java.security.InvalidParameterException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PositionTestShould {
 

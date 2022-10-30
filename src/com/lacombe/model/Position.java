@@ -1,67 +1,67 @@
 package src.com.lacombe.model;
 
 import src.com.lacombe.Enum.Direction;
-import src.com.lacombe.Enum.Move;
 
-import java.util.Objects;
-
-public class Position {
+public class Position{
     Coordinate coordinate;
     Direction direction;
 
-    public Position(int x, int y, char direction) {
-        this.coordinate = new Coordinate(x,y);
+    public Position(int abscissa, int ordonna, char direction) {
+        this.coordinate = new Coordinate(abscissa, ordonna);
         this.direction = Direction.getByChar(direction);
     }
 
-    public void moveForward(){
-        switch (direction){
-            case East:
-                coordinate.moveForwardEast();
-                break;
-            case West:
-                coordinate.moveForwardWest();
-                break;
-            case North:
-                coordinate.moveForwardNorth();
-                break;
-            case South:
-                coordinate.moveForwardSouth();
-                break;
-        }
-    }
-
-    public Coordinate getCoordinate() {
-        return coordinate;
-    }
-
-    public void setCoordinate(Coordinate coordinate) {
+    public Position(Coordinate coordinate, Direction direction) {
         this.coordinate = coordinate;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public Position moveForward(){
+        if(direction == Direction.East)
+            coordinate.incrementOrdonna();
+        if(direction == Direction.West)
+            coordinate.decrementOrdonna();
+        if(direction == Direction.North)
+            coordinate.incrementAbscissa();
+        if(direction == Direction.South)
+            coordinate.decrementAbscissa();
+        return this;
+    }
+
+    public Position moveBackward() {
+        if(direction == Direction.East)
+            coordinate.decrementOrdonna();
+        if(direction == Direction.West)
+            coordinate.incrementOrdonna();
+        if(direction == Direction.North)
+            coordinate.decrementAbscissa();
+        if(direction == Direction.South)
+            coordinate.incrementAbscissa();
+        return this;
+    }
+
+    public Position moveLeft() {
+        if(direction == Direction.East)
+            return new Position(coordinate, Direction.North);
+        if(direction == Direction.West)
+            return new Position(coordinate, Direction.South);
+        if(direction == Direction.North)
+            return new Position(coordinate, Direction.West);
+        return new Position(coordinate, Direction.East);
+    }
+
+    public Position moveRight() {
+        if(direction == Direction.East)
+            return new Position(coordinate, Direction.South);
+        if(direction == Direction.West)
+            return new Position(coordinate, Direction.North);
+        if(direction == Direction.North)
+            return new Position(coordinate, Direction.East);
+        return new Position(coordinate, Direction.West);
     }
 
     @Override
     public String toString() {
-        return  coordinate + ":" + direction.getDirectionSymbole() ;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Position position = (Position) o;
-        return direction == position.direction && Objects.equals(coordinate, position.coordinate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(coordinate, direction);
+        return  coordinate.toString() + ":" + direction.getDirectionSymbole() ;
     }
 }
