@@ -11,7 +11,6 @@ public class Position{
         this.direction = Direction.getByChar(direction);
     }
 
-
     public Position(Position position) {
         this.coordinate = new Coordinate(position.coordinate.abscissa, position.coordinate.ordonna);
         this.direction = position.direction;
@@ -19,36 +18,34 @@ public class Position{
 
     public void moveForward(){
         if(direction == Direction.East){
-            coordinate.incrementOrdonna();
-            return;
-        }
-        if(direction == Direction.West){
-            coordinate.decrementOrdonna();
-            return;
-        }
-        if(direction == Direction.North){
             coordinate.incrementAbscissa();
             return;
         }
-        coordinate.decrementAbscissa();
-
+        if(direction == Direction.West){
+            coordinate.decrementAbscissa();
+            return;
+        }
+        if(direction == Direction.North){
+            coordinate.incrementOrdonna();
+            return;
+        }
+        coordinate.decrementOrdonna();
     }
 
     public void moveBackward() {
         if(direction == Direction.East){
-            coordinate.decrementOrdonna();
-            return;
-        }
-        if(direction == Direction.West){
-            coordinate.incrementOrdonna();
-            return;
-        }
-        if(direction == Direction.North){
             coordinate.decrementAbscissa();
             return;
         }
-        coordinate.incrementAbscissa();
-
+        if(direction == Direction.West){
+            coordinate.incrementAbscissa();
+            return;
+        }
+        if(direction == Direction.North){
+            coordinate.decrementOrdonna();
+            return;
+        }
+        coordinate.incrementOrdonna();
     }
 
     public void moveLeft() {

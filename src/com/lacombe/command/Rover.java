@@ -13,9 +13,8 @@ public class Rover {
     }
 
     public void move(Position position, Command commands) {
-        if(position == null || commands.size()  < 1){
+        if(position == null || commands.size()  < 1)
             return;
-        }
         setCurrentPosition(new Position(position));
         commands.execute(position);
         checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(position);
@@ -25,9 +24,9 @@ public class Rover {
 
     private void checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(Position position) {
         if(grid.getCellByHisCoordinate(position.getCoordinate()) == null)
-            throw new NullPointerException("You are try to go out of the board : " + position);
+            throw new NullPointerException("You are try to go out of the board : " + position + "; current position is " + currentPosition);
         if(grid.hasObstacle(position.getCoordinate()))
-            throw new RuntimeException("An obstacle is detected in position " + position);
+            throw new RuntimeException("An obstacle is detected in position " + position + "; current position is " + currentPosition);
     }
 
     public String getCurrentPosition() {

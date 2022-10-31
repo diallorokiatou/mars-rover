@@ -35,7 +35,7 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("1:2:E", rover.getCurrentPosition());
+        assertEquals("2:1:E", rover.getCurrentPosition());
     }
 
     @Test
@@ -48,7 +48,7 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("1:0:W", rover.getCurrentPosition());
+        assertEquals("0:1:W", rover.getCurrentPosition());
     }
 
     @Test
@@ -61,7 +61,7 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("0:1:S", rover.getCurrentPosition());
+        assertEquals("1:0:S", rover.getCurrentPosition());
     }
 
     @Test
@@ -74,11 +74,11 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("2:1:N", rover.getCurrentPosition());
+        assertEquals("1:2:N", rover.getCurrentPosition());
     }
 
     @Test
-    public void move_when_direction_is_East() {
+    public void move_backward_when_direction_is_East() {
         Grid grid = new Grid(10);
         char[] moves = new char[]{'b'};
         Command command = new Command(moves);
@@ -87,7 +87,7 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("1:0:E", rover.getCurrentPosition());
+        assertEquals("0:1:E", rover.getCurrentPosition());
     }
 
     @Test
@@ -100,7 +100,7 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("1:2:W", rover.getCurrentPosition());
+        assertEquals("2:1:W", rover.getCurrentPosition());
     }
 
     @Test
@@ -113,7 +113,7 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("2:1:S", rover.getCurrentPosition());
+        assertEquals("1:2:S", rover.getCurrentPosition());
     }
 
     @Test
@@ -126,7 +126,7 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("0:1:N", rover.getCurrentPosition());
+        assertEquals("1:0:N", rover.getCurrentPosition());
     }
 
     @Test
@@ -230,7 +230,7 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("2:0:N", rover.getCurrentPosition());
+        assertEquals("0:2:N", rover.getCurrentPosition());
     }
 
     @Test
@@ -243,7 +243,7 @@ class RoverTestShould {
         Rover rover = new Rover(grid);
         rover.move(position, command);
 
-        assertEquals("2:0:N", rover.getCurrentPosition());
+        assertEquals("0:2:N", rover.getCurrentPosition());
     }
 
     @Test
@@ -271,7 +271,7 @@ class RoverTestShould {
         Throwable exception = assertThrows(NullPointerException.class,
                 () -> {rover.move(position, command);});
 
-        assertEquals("You are try to go out of the board : 2:1:N", exception.getMessage());
+        assertEquals("You are try to go out of the board : 1:2:N; current position is 1:1:N", exception.getMessage());
         assertEquals("1:1:N", rover.getCurrentPosition());
     }
 
@@ -282,15 +282,15 @@ class RoverTestShould {
         Command command = new Command(moves);
         Position position = new Position(1, 1, 'N');
 
-        grid.setObstacle(new Coordinate(4, 1));
-        grid.setObstacle(new Coordinate(3, 1));
+        grid.setObstacle(new Coordinate(1, 4));
+        grid.setObstacle(new Coordinate(1, 3));
         Rover rover = new Rover(grid);
 
         Throwable exception = assertThrows(RuntimeException.class,
                 () -> {rover.move(position, command);});
 
-        assertEquals("An obstacle is detected in position 3:1:N", exception.getMessage());
-        assertEquals("2:1:N", rover.getCurrentPosition());
+        assertEquals("An obstacle is detected in position 1:3:N; current position is 1:2:N", exception.getMessage());
+        assertEquals("1:2:N", rover.getCurrentPosition());
     }
 
 }
