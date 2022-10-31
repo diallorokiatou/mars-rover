@@ -3,6 +3,7 @@ package src.test.com.lacombe.command;
 import org.junit.jupiter.api.Test;
 import src.com.lacombe.command.Rover;
 import src.com.lacombe.model.Command;
+import src.com.lacombe.model.Coordinate;
 import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Position;
 
@@ -259,7 +260,7 @@ class RoverTestShould {
     }
 
     @Test
-    public void throw_error_when_rover_try_to_cross_edges_and_position_is_the_last_possible_move() {
+    public void throw_error_when_rover_try_to_cross_edges_then_position_is_the_last_possible_move() {
         Grid grid = new Grid(2);
         char[] moves = new char[]{'f', 'f', 'f'};
         Command command = new Command(moves);
@@ -269,6 +270,26 @@ class RoverTestShould {
 
         Throwable exception = assertThrows(NullPointerException.class,
                 () -> {rover.move(position, command);});
+
+        assertEquals("You are try to go out of the board : 2:1:N", exception.getMessage());
+        assertEquals("1:1:N", rover.getCurrentPosition());
+    }
+
+    @Test
+    public void throw_error_when_obstacle_is_reaches_then_position_is_the_last_possible_move() {
+        Grid grid = new Grid(10);
+        char[] moves = new char[]{'f', 'f', 'f'};
+        Command command = new Command(moves);
+        Position position = new Position(1, 1, 'N');
+
+        grid.setObstacle(new Coordinate(4, 1));
+        grid.setObstacle(new Coordinate(3, 1));
+        Rover rover = new Rover(grid);
+
+        Throwable exception = assertThrows(RuntimeException.class,
+                () -> {rover.move(position, command);});
+
+        assertEquals("An obstacle is detected in position 3:1:N", exception.getMessage());
         assertEquals("2:1:N", rover.getCurrentPosition());
     }
 

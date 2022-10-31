@@ -11,57 +11,85 @@ public class Position{
         this.direction = Direction.getByChar(direction);
     }
 
-    public Position(Coordinate coordinate, Direction direction) {
-        this.coordinate = coordinate;
-        this.direction = direction;
+
+    public Position(Position position) {
+        this.coordinate = new Coordinate(position.coordinate.abscissa, position.coordinate.ordonna);
+        this.direction = position.direction;
     }
 
-    public Position moveForward(){
-        if(direction == Direction.East)
+    public void moveForward(){
+        if(direction == Direction.East){
             coordinate.incrementOrdonna();
-        if(direction == Direction.West)
+            return;
+        }
+        if(direction == Direction.West){
             coordinate.decrementOrdonna();
-        if(direction == Direction.North)
+            return;
+        }
+        if(direction == Direction.North){
             coordinate.incrementAbscissa();
-        if(direction == Direction.South)
-            coordinate.decrementAbscissa();
-        return this;
+            return;
+        }
+        coordinate.decrementAbscissa();
+
     }
 
-    public Position moveBackward() {
-        if(direction == Direction.East)
+    public void moveBackward() {
+        if(direction == Direction.East){
             coordinate.decrementOrdonna();
-        if(direction == Direction.West)
+            return;
+        }
+        if(direction == Direction.West){
             coordinate.incrementOrdonna();
-        if(direction == Direction.North)
+            return;
+        }
+        if(direction == Direction.North){
             coordinate.decrementAbscissa();
-        if(direction == Direction.South)
-            coordinate.incrementAbscissa();
-        return this;
+            return;
+        }
+        coordinate.incrementAbscissa();
+
     }
 
-    public Position moveLeft() {
-        if(direction == Direction.East)
-            return new Position(coordinate, Direction.North);
-        if(direction == Direction.West)
-            return new Position(coordinate, Direction.South);
-        if(direction == Direction.North)
-            return new Position(coordinate, Direction.West);
-        return new Position(coordinate, Direction.East);
+    public void moveLeft() {
+        if(direction == Direction.East){
+            this.direction = Direction.North;
+            return;
+        }
+        if(direction == Direction.West){
+            this.direction = Direction.South;
+            return;
+        }
+        if(direction == Direction.North){
+            this.direction = Direction.West;
+            return;
+        }
+       this.direction = Direction.East;
     }
 
-    public Position moveRight() {
-        if(direction == Direction.East)
-            return new Position(coordinate, Direction.South);
-        if(direction == Direction.West)
-            return new Position(coordinate, Direction.North);
-        if(direction == Direction.North)
-            return new Position(coordinate, Direction.East);
-        return new Position(coordinate, Direction.West);
+    public void moveRight() {
+        if(direction == Direction.East){
+            this.direction = Direction.South;
+            return;
+        }
+        if(direction == Direction.West){
+            this.direction = Direction.North;
+            return;
+        }
+        if(direction == Direction.North){
+            this.direction = Direction.East;
+            return;
+        }
+        this.direction = Direction.West;
+    }
+
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
 
     @Override
     public String toString() {
         return  coordinate.toString() + ":" + direction.getDirectionSymbole() ;
     }
+
 }

@@ -1,6 +1,5 @@
 package src.com.lacombe.command;
 
-import src.com.lacombe.Enum.Move;
 import src.com.lacombe.model.Command;
 import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Position;
@@ -13,27 +12,30 @@ public class Rover {
         this.grid = grid;
     }
 
-    public void move(Position startingPosition, Command command) {
-        if(startingPosition == null || grid.getCellByHisCoordinate(startingPosition) == null)
-            throw new NullPointerException("You are try to go out of the board : " + startingPosition);
-        if(command.size()  < 1)
+    public void move(Position position, Command commands) {
+        if(position == null || commands.size()  < 1){
             return;
-        currentPosition = getMove(startingPosition, command.getMove(0));
-        move(currentPosition, command.skip(1));
+        }
+        setCurrentPosition(new Position(position));
+        commands.execute(position);
+        checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(position);
+        setCurrentPosition(position);
+        move(currentPosition, commands.skip(1));
     }
 
-    public Position getMove(Position position, Move move){
-        if(move == Move.FORWARD)
-            return position.moveForward();
-        if(move == Move.BACKWARD)
-                return position.moveBackward();
-        if(move == Move.LEFT)
-                return position.moveLeft();
-        return position.moveRight();
+    private void checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(Position position) {
+        if(grid.getCellByHisCoordinate(position.getCoordinate()) == null)
+            throw new NullPointerException("You are try to go out of the board : " + position);
+        if(grid.hasObstacle(position.getCoordinate()))
+            throw new RuntimeException("An obstacle is detected in position " + position);
     }
 
     public String getCurrentPosition() {
         return currentPosition.toString();
+    }
+
+    public void setCurrentPosition(Position currentPosition) {
+        this.currentPosition = currentPosition;
     }
 
 }

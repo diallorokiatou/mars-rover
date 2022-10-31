@@ -21,12 +21,24 @@ public class Grid {
         }
     }
 
-    public GridCell getCellByHisCoordinate(Position position) {
+    public GridCell getCellByHisCoordinate(Coordinate coordinate) {
         for (GridCell gridCell: gridPlate) {
-            if(gridCell.equals(position))
+            if(gridCell.haveSameCordinate(coordinate))
                 return gridCell;
         }
         return null;
+    }
+
+    public void setObstacle(Coordinate coordinate) {
+        GridCell gridCell = getCellByHisCoordinate(coordinate);
+        if(gridCell == null) return;
+        gridCell.setObstacle();
+    }
+
+    public boolean hasObstacle(Coordinate coordinate) {
+        GridCell gridCell = getCellByHisCoordinate(coordinate);
+        if(gridCell == null) return true;
+        return gridCell.hasObstacle;
     }
 
     public void print() {

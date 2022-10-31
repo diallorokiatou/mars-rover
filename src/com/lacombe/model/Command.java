@@ -20,12 +20,29 @@ public class Command {
         this.commands = commands;
     }
 
+    public void execute(Position position){
+        Move firstCommand = getFirstCommand();
+        if(firstCommand == Move.FORWARD){
+            position.moveForward();
+            return;
+        }
+        if(firstCommand == Move.BACKWARD){
+            position.moveBackward();
+            return;
+        }
+        if(firstCommand == Move.LEFT){
+            position.moveLeft();
+            return;
+        }
+        position.moveRight();
+    }
+
     public List<Move> getCommands() {
         return commands;
     }
 
-    public Move getMove(int i){
-       return commands.get(i);
+    public Move getFirstCommand(){
+       return commands.get(0);
     }
     public int size() {
         return commands.size();
