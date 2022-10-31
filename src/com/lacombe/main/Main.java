@@ -38,7 +38,7 @@ public class Main {
                     positionChar = positionIn.split(",");
                     grid.setObstacle(new Coordinate(Integer.parseInt(positionChar[0]), Integer.parseInt(positionChar[1])));
                 }while (true);
-                }
+            }
 
             Rover rover = new Rover(grid);
             rover.move(position, command);
