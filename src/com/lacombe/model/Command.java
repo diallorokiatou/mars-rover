@@ -37,10 +37,6 @@ public class Command {
         position.moveRight();
     }
 
-    public List<Move> getCommands() {
-        return commands;
-    }
-
     public Move getFirstCommand(){
        return commands.get(0);
     }

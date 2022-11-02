@@ -10,8 +10,5 @@
         <module name="mars" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="mars-rover" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
