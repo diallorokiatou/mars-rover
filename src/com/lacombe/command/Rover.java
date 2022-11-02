@@ -17,7 +17,6 @@ public class Rover {
             return;
         setCurrentPosition(new Position(position));
         commands.execute(position);
-        checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(position);
         setCurrentPosition(position);
         move(currentPosition, commands.skip(1));
     }
@@ -34,6 +33,7 @@ public class Rover {
     }
 
     public void setCurrentPosition(Position currentPosition) {
+        checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(currentPosition);
         this.currentPosition = currentPosition;
     }
 

@@ -260,6 +260,22 @@ class RoverTestShould {
     }
 
     @Test
+    public void throw_error_when_starting_point_has_an_obstacle() {
+        Grid grid = new Grid(10);
+        char[] moves = new char[]{'f', 'f', 'f'};
+        Command command = new Command(moves);
+        Position position = new Position(1, 2, 'N');
+
+        grid.setObstacle(new Coordinate(1, 2));
+        grid.setObstacle(new Coordinate(1, 3));
+        Rover rover = new Rover(grid);
+
+        Throwable exception = assertThrows(RuntimeException.class,
+                () -> {rover.move(position, command);});
+        assertEquals("An obstacle is detected in position 1:2:N; current position is null", exception.getMessage());
+    }
+
+    @Test
     public void throw_error_when_rover_try_to_cross_edges_then_position_is_the_last_possible_move() {
         Grid grid = new Grid(2);
         char[] moves = new char[]{'f', 'f', 'f'};
