@@ -309,4 +309,41 @@ class RoverTestShould {
         assertEquals("1:2:N", rover.getCurrentPosition());
     }
 
+    @Test
+    public void throw_error_when_starting_point_is_null() {
+        Grid grid = new Grid(2);
+        char[] moves = new char[]{'f', 'f', 'f'};
+        Command command = new Command(moves);
+        Position position = null;
+
+        Rover rover = new Rover(grid);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> {rover.move(position, command);});
+    }
+
+    @Test
+    public void throw_error_when_command_is_null() {
+        Grid grid = new Grid(2);
+        Command command = null;
+        Position position = null;
+
+        Rover rover = new Rover(grid);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> {rover.move(position, command);});
+    }
+
+    @Test
+    public void throw_error_when_command_is_empty() {
+        Grid grid = new Grid(2);
+        Command command = new Command(new char[]{});
+        Position position = null;
+
+        Rover rover = new Rover(grid);
+
+        Throwable exception = assertThrows(IllegalArgumentException.class,
+                () -> {rover.move(position, command);});
+    }
+
 }

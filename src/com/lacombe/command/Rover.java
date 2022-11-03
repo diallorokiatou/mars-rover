@@ -14,8 +14,8 @@ public class Rover {
     }
 
     public void move(Position position, Command commands) {
-        if(position == null || commands.size()  < 1)
-            return;
+        if(commands == null ||commands.size()  < 1)
+            throw new IllegalArgumentException("The commands must be initialize and must contains at least one Move");
         setCurrentPosition(position);
         for (Move move: commands.getCommands()) {
            setCurrentPosition(commands.executeCommandOnPosition(position,move));
@@ -23,6 +23,8 @@ public class Rover {
     }
 
     private void checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(Position position) {
+        if(position == null)
+            throw new IllegalArgumentException("The starting position is null");
         if(grid.getCellByHisCoordinate(position.getCoordinate()) == null)
             throw new NullPointerException("You are try to go out of the board : " + position + "; current position is " + currentPosition);
         if(grid.hasObstacle(position.getCoordinate()))
