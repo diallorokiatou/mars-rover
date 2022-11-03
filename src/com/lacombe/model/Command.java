@@ -20,21 +20,8 @@ public class Command {
         this.commands = commands;
     }
 
-    public void execute(Position position){
-        Move firstCommand = getFirstCommand();
-        if(firstCommand == Move.FORWARD){
-            position.moveForward();
-            return;
-        }
-        if(firstCommand == Move.BACKWARD){
-            position.moveBackward();
-            return;
-        }
-        if(firstCommand == Move.LEFT){
-            position.moveLeft();
-            return;
-        }
-        position.moveRight();
+    public void executeCommandOnPosition(Position position, Move move){
+        move.executeCommand(position);
     }
 
     public Move getFirstCommand(){
@@ -46,5 +33,9 @@ public class Command {
 
     public Command skip(int n) {
         return new Command(commands.stream().skip(n).toList());
+    }
+
+    public List<Move> getCommands() {
+        return commands;
     }
 }

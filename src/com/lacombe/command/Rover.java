@@ -16,9 +16,13 @@ public class Rover {
         if(position == null || commands.size()  < 1)
             return;
         setCurrentPosition(new Position(position));
-        commands.execute(position);
+        commands.executeCommandOnPosition(position, commands.getFirstCommand());
         setCurrentPosition(position);
-        move(currentPosition, commands.skip(1));
+        move(position, commands.skip(1));
+        /*for (Move move: commands.getCommands()) {
+            commands.execute(position);
+        }
+        setCurrentPosition(position);*/
     }
 
     private void checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(Position position) {

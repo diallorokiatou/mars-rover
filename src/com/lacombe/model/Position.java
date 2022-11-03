@@ -4,6 +4,7 @@ import src.com.lacombe.Enum.Direction;
 
 public class Position{
     Coordinate coordinate;
+
     Direction direction;
 
     public Position(int abscissa, int ordonna, char direction) {
@@ -16,70 +17,6 @@ public class Position{
         this.direction = position.direction;
     }
 
-    public void moveForward(){
-        if(direction == Direction.East){
-            coordinate.incrementAbscissa();
-            return;
-        }
-        if(direction == Direction.West){
-            coordinate.decrementAbscissa();
-            return;
-        }
-        if(direction == Direction.North){
-            coordinate.incrementOrdonna();
-            return;
-        }
-        coordinate.decrementOrdonna();
-    }
-
-    public void moveBackward() {
-        if(direction == Direction.East){
-            coordinate.decrementAbscissa();
-            return;
-        }
-        if(direction == Direction.West){
-            coordinate.incrementAbscissa();
-            return;
-        }
-        if(direction == Direction.North){
-            coordinate.decrementOrdonna();
-            return;
-        }
-        coordinate.incrementOrdonna();
-    }
-
-    public void moveLeft() {
-        if(direction == Direction.East){
-            this.direction = Direction.North;
-            return;
-        }
-        if(direction == Direction.West){
-            this.direction = Direction.South;
-            return;
-        }
-        if(direction == Direction.North){
-            this.direction = Direction.West;
-            return;
-        }
-       this.direction = Direction.East;
-    }
-
-    public void moveRight() {
-        if(direction == Direction.East){
-            this.direction = Direction.South;
-            return;
-        }
-        if(direction == Direction.West){
-            this.direction = Direction.North;
-            return;
-        }
-        if(direction == Direction.North){
-            this.direction = Direction.East;
-            return;
-        }
-        this.direction = Direction.West;
-    }
-
     public Coordinate getCoordinate() {
         return coordinate;
     }
@@ -89,4 +26,27 @@ public class Position{
         return  coordinate.toString() + ":" + direction.getDirectionSymbole() ;
     }
 
+    public void incrementOrdonna() {
+        coordinate.incrementOrdonna();
+    }
+
+    public void decrementOrdonna() {
+        coordinate.decrementOrdonna();
+    }
+
+    public void incrementAbscissa() {
+        coordinate.incrementAbscissa();
+    }
+
+    public void decrementAbscissa() {
+        coordinate.decrementAbscissa();
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
 }
