@@ -1,11 +1,10 @@
 package src.com.lacombe.Enum;
 
-import src.com.lacombe.command.IMove;
 import src.com.lacombe.model.Position;
 
 import java.security.InvalidParameterException;
 
-public enum Direction implements IMove {
+public enum Direction {
     North('N'){
         @Override
         public Position moveForward(Position position) {
@@ -124,4 +123,9 @@ public enum Direction implements IMove {
     public char getDirectionSymbole() {
         return directionSymbole;
     }
+
+    public abstract Position moveForward(Position position);
+    public abstract Position moveBackward(Position position);
+    public abstract Position moveLeft(Position position);
+    public abstract Position moveRight(Position position);
 }

@@ -1,9 +1,8 @@
 package src.com.lacombe.model;
 
 import src.com.lacombe.Enum.Direction;
-import src.com.lacombe.command.IMove;
 
-public class Position implements IMove {
+public class Position {
     Coordinate coordinate;
 
     Direction direction;
@@ -47,23 +46,19 @@ public class Position implements IMove {
         this.direction = direction;
     }
 
-    @Override
-    public Position moveForward(Position position) {
+    public Position moveForward() {
         return direction.moveForward(this);
     }
 
-    @Override
-    public Position moveBackward(Position position) {
+    public Position moveBackward() {
         return direction.moveBackward(this);
     }
 
-    @Override
-    public Position moveLeft(Position position) {
+    public Position moveLeft() {
         return direction.moveLeft(this);
     }
 
-    @Override
-    public Position moveRight(Position position) {
+    public Position moveRight() {
         return direction.moveRight(this);
     }
 }

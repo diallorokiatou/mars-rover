@@ -8,26 +8,26 @@ public enum Move {
     FORWARD('f'){
         @Override
         public Position executeCommand(Position position) {
-            return position.moveForward(position);
+            return position.moveForward();
 
         }
     },
     BACKWARD('b') {
         @Override
         public Position executeCommand(Position position) {
-            return position.moveBackward(position);
+            return position.moveBackward();
         }
     },
     LEFT('l') {
         @Override
         public Position executeCommand(Position position) {
-            return position.moveLeft(position);
+            return position.moveLeft();
         }
     },
     RIGHT('r') {
         @Override
         public Position executeCommand(Position position) {
-            return position.moveRight(position);
+            return position.moveRight();
         }
     };
 
