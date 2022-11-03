@@ -1,5 +1,6 @@
 package src.com.lacombe.command;
 
+import src.com.lacombe.Enum.Move;
 import src.com.lacombe.model.Command;
 import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Position;
@@ -15,14 +16,10 @@ public class Rover {
     public void move(Position position, Command commands) {
         if(position == null || commands.size()  < 1)
             return;
-        setCurrentPosition(new Position(position));
-        commands.executeCommandOnPosition(position, commands.getFirstCommand());
         setCurrentPosition(position);
-        move(position, commands.skip(1));
-        /*for (Move move: commands.getCommands()) {
-            commands.execute(position);
+        for (Move move: commands.getCommands()) {
+           setCurrentPosition(commands.executeCommandOnPosition(position,move));
         }
-        setCurrentPosition(position);*/
     }
 
     private void checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(Position position) {
@@ -38,7 +35,7 @@ public class Rover {
 
     public void setCurrentPosition(Position currentPosition) {
         checkIfPositionIsOutOfEdgeOrThereIsAnObastacleOnIt(currentPosition);
-        this.currentPosition = currentPosition;
+        this.currentPosition = new Position(currentPosition);
     }
 
 }

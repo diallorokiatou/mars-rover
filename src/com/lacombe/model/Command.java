@@ -20,8 +20,8 @@ public class Command {
         this.commands = commands;
     }
 
-    public void executeCommandOnPosition(Position position, Move move){
-        move.executeCommand(position);
+    public Position executeCommandOnPosition(Position position, Move move){
+        return move.executeCommand(position);
     }
 
     public Move getFirstCommand(){

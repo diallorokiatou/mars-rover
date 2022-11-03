@@ -1,10 +1,11 @@
 package src.com.lacombe.Enum;
 
+import src.com.lacombe.command.IMove;
 import src.com.lacombe.model.Position;
 
 import java.security.InvalidParameterException;
 
-public enum Direction {
+public enum Direction implements IMove {
     North('N'){
         @Override
         public Position moveForward(Position position) {
@@ -104,10 +105,9 @@ public enum Direction {
             position.setDirection(Direction.North);
             return position;
         }
-    }
-    ;
+    };
 
-    char directionSymbole;
+    final char directionSymbole;
 
     Direction(char directionSymbole) {
         this.directionSymbole = directionSymbole;
@@ -115,9 +115,8 @@ public enum Direction {
 
     public static Direction getByChar(char directionSymbol){
         for (Direction direction : Direction.values()) {
-            if(direction.directionSymbole == directionSymbol){
+            if(direction.directionSymbole == directionSymbol)
                 return direction;
-            }
         }
         throw new InvalidParameterException("Invalid direction char : " + directionSymbol);
     }
@@ -125,10 +124,4 @@ public enum Direction {
     public char getDirectionSymbole() {
         return directionSymbole;
     }
-
-    public abstract Position moveForward(Position position);
-    public abstract Position moveBackward(Position position);
-    public abstract Position moveLeft(Position position);
-    public abstract Position moveRight(Position position);
-
 }
