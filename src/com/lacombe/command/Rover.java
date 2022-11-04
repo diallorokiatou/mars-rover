@@ -15,77 +15,25 @@ public class Rover {
         this.direction = Direction.getByChar(direction);
     }
 
+    public Rover(Point point, Direction direction) {
+        this.point = point;
+        this.direction = direction;
+    }
+
     public void move(Commands commands) {
         if(commands == null)
             throw new NullPointerException("commands can't be null");
         if(commands.size() < 1) return;
         for(Command command : commands.getCommands()){
-            if(command == Command.FORWARD){
-                if(direction == Direction.North){
-                    point.incrementY();
-                }
-                if(direction == Direction.South){
-                    point.decrementY();
-                }
-                if(direction == Direction.East){
-                    point.incrementX();
-                }
-                if(direction == Direction.West){
-                    point.decrementX();
-                }
-            }
-            if(command == Command.BACKWARD){
-                if(direction == Direction.North){
-                    point.decrementY();
-                }
-                if(direction == Direction.South){
-                    point.incrementY();
-                }
-                if(direction == Direction.East){
-                    point.decrementX();
-                }
-                if(direction == Direction.West){
-                    point.incrementX();
-                }
-            }
-            if(command == Command.LEFT){
-                if(direction == Direction.North){
-                    direction = Direction.West;
-                    return;
-                }
-                if(direction == Direction.South){
-                    direction = Direction.East;
-                    return;
-                }
-                if(direction == Direction.East){
-                    direction = Direction.North;
-                    return;
-                }
-                if(direction == Direction.West){
-                    direction = Direction.South;
-                    return;
-                }
-            }
-            if(command == Command.RIGHT){
-                if(direction == Direction.North){
-                    direction = Direction.East;
-                    return;
-                }
-                if(direction == Direction.South){
-                    direction = Direction.West;
-                    return;
-                }
-                if(direction == Direction.East){
-                    direction = Direction.South;
-                    return;
-                }
-                if(direction == Direction.West){
-                    direction = Direction.North;
-                    return;
-                }
-            }
+            Rover rover = command.execute(point, direction);
+            setRover(rover);
         }
 
+    }
+
+    private void setRover(Rover rover) {
+        this.point = rover.point;
+        this.direction = rover.direction;
     }
 
     @Override
