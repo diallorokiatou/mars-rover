@@ -48,6 +48,42 @@ public class Rover {
                     point.incrementX();
                 }
             }
+            if(command == Command.LEFT){
+                if(direction == Direction.North){
+                    direction = Direction.West;
+                    return;
+                }
+                if(direction == Direction.South){
+                    direction = Direction.East;
+                    return;
+                }
+                if(direction == Direction.East){
+                    direction = Direction.North;
+                    return;
+                }
+                if(direction == Direction.West){
+                    direction = Direction.South;
+                    return;
+                }
+            }
+            if(command == Command.RIGHT){
+                if(direction == Direction.North){
+                    direction = Direction.East;
+                    return;
+                }
+                if(direction == Direction.South){
+                    direction = Direction.West;
+                    return;
+                }
+                if(direction == Direction.East){
+                    direction = Direction.South;
+                    return;
+                }
+                if(direction == Direction.West){
+                    direction = Direction.North;
+                    return;
+                }
+            }
         }
 
     }
