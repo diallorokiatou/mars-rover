@@ -9,19 +9,7 @@ public enum Command {
     FORWARD('f'){
         @Override
         public Rover execute(Point point, Direction direction) {
-            if(direction == Direction.North){
-                point.incrementY();
-                return new Rover(point, direction);
-            }
-            if(direction == Direction.South){
-                point.decrementY();
-                return new Rover(point, direction);
-            }
-            if(direction == Direction.East){
-                point.incrementX();
-                return new Rover(point, direction);
-            }
-            point.decrementX();
+            point = direction.getForward(point);
             return new Rover(point, direction);
         }
     },

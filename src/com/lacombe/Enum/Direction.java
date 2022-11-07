@@ -1,5 +1,7 @@
 package src.com.lacombe.Enum;
 
+import src.com.lacombe.model.Point;
+
 import java.security.InvalidParameterException;
 
 public enum Direction {
@@ -13,6 +15,12 @@ public enum Direction {
         public Direction getRight() {
             return Direction.East;
         }
+
+        @Override
+        public Point getForward(Point point) {
+            point.incrementY();
+            return point;
+        }
     },
     South('S'){
         @Override
@@ -23,6 +31,12 @@ public enum Direction {
         @Override
         public Direction getRight() {
             return Direction.West;
+        }
+
+        @Override
+        public Point getForward(Point point) {
+            point.decrementY();
+            return point;
         }
     },
     East('E') {
@@ -35,6 +49,12 @@ public enum Direction {
         public Direction getRight() {
             return Direction.South;
         }
+
+        @Override
+        public Point getForward(Point point) {
+            point.incrementX();
+            return point;
+        }
     },
     West('W') {
         @Override
@@ -45,6 +65,12 @@ public enum Direction {
         @Override
         public Direction getRight() {
             return Direction.North;
+        }
+
+        @Override
+        public Point getForward(Point point) {
+            point.decrementX();
+            return point;
         }
     };
 
@@ -65,6 +91,8 @@ public enum Direction {
     public abstract Direction getLeft();
 
     public abstract Direction getRight();
+
+    public abstract Point getForward(Point point);
 
     @Override
     public String toString() {
