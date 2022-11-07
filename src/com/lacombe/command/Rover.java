@@ -7,8 +7,7 @@ import src.com.lacombe.model.Position;
 public class Rover {
     Position position;
 
-    int capacity = 4;
-    public Rover(int x, int y, char direction) {
+    public Rover(int x, int y, char direction, int capacity) {
         position = new Position(x, y,direction, capacity);
     }
 

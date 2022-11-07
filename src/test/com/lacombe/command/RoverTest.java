@@ -12,10 +12,10 @@ class RoverTestShould {
 
     @Test
     public void init_the_rover_starting_Rover() {
-        Rover rover_starting_at_x_1_y_1_direction_E = new Rover(1,1, 'E');
-        Rover rover_starting_at_x_1_y_2_direction_W = new Rover(1, 2, 'W');
-        Rover rover_starting_at_x_2_y_1_direction_N = new Rover(2, 1, 'N');
-        Rover rover_starting_at_x_1_y_1_direction_S = new Rover(1, 1, 'S');
+        Rover rover_starting_at_x_1_y_1_direction_E = new Rover(1, 1, 'E', 4);
+        Rover rover_starting_at_x_1_y_2_direction_W = new Rover(1, 2, 'W', 4);
+        Rover rover_starting_at_x_2_y_1_direction_N = new Rover(2, 1, 'N', 4);
+        Rover rover_starting_at_x_1_y_1_direction_S = new Rover(1, 1, 'S', 4);
 
         assertEquals("1:1:E", rover_starting_at_x_1_y_1_direction_E.toString());
         assertEquals("1:2:W", rover_starting_at_x_1_y_2_direction_W.toString());
@@ -27,7 +27,7 @@ class RoverTestShould {
     public void throw_illegal_argument_error_wen_commands_is_null() {
         Commands commands = null;
 
-        Rover rover = new Rover(1, 1, 'E');
+        Rover rover = new Rover(1, 1, 'E', 4);
 
         Throwable exception = assertThrows(NullPointerException.class,
                 () -> {rover.receive(commands);});
@@ -39,7 +39,7 @@ class RoverTestShould {
         char[] command = new char[]{};
         Commands commands = new Commands(command);
 
-        Rover rover = new Rover(1, 1, 'E');
+        Rover rover = new Rover(1, 1, 'E', 4);
         rover.receive(commands);
 
         assertEquals("1:1:E", rover.toString());
@@ -50,7 +50,7 @@ class RoverTestShould {
         char[] command = new char[]{'f'};
         Commands commands = new Commands(command);
 
-        Rover rover = new Rover(1, 1, 'E');
+        Rover rover = new Rover(1, 1, 'E', 4);
         rover.receive(commands);
 
         assertEquals("2:1:E", rover.toString());
@@ -60,7 +60,7 @@ class RoverTestShould {
     public void move_forward_when_direction_is_West() {
         char[] moves = new char[]{'f'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(2, 1, 'W');
+        Rover rover = new Rover(2, 1, 'W', 4);
 
         rover.receive(command);
 
@@ -71,7 +71,7 @@ class RoverTestShould {
     public void move_forward_when_direction_is_South() {
         char[] moves = new char[]{'f'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 2, 'S');
+        Rover rover = new Rover(1, 2, 'S', 4);
 
         rover.receive(command);
 
@@ -82,7 +82,7 @@ class RoverTestShould {
     public void move_forward_when_direction_is_North() {
         char[] moves = new char[]{'f'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'N');
+        Rover rover = new Rover(1, 1, 'N', 4);
         
         rover.receive(command);
 
@@ -93,7 +93,7 @@ class RoverTestShould {
     public void move_backward_when_direction_is_East() {
         char[] moves = new char[]{'b'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(2, 1, 'E');
+        Rover rover = new Rover(2, 1, 'E', 4);
         
         rover.receive(command);
 
@@ -104,7 +104,7 @@ class RoverTestShould {
     public void move_backward_when_direction_is_West() {
         char[] moves = new char[]{'b'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'W');
+        Rover rover = new Rover(1, 1, 'W', 4);
         
         rover.receive(command);
 
@@ -115,7 +115,7 @@ class RoverTestShould {
     public void move_backward_when_direction_is_South() {
         char[] moves = new char[]{'b'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'S');
+        Rover rover = new Rover(1, 1, 'S', 4);
         
         rover.receive(command);
 
@@ -126,7 +126,7 @@ class RoverTestShould {
     public void move_backward_when_direction_is_North() {
         char[] moves = new char[]{'b'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 2, 'N');
+        Rover rover = new Rover(1, 2, 'N', 4);
         
         rover.receive(command);
 
@@ -137,7 +137,7 @@ class RoverTestShould {
     public void move_left_when_direction_is_East() {
         char[] moves = new char[]{'l'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'E');
+        Rover rover = new Rover(1, 1, 'E', 4);
 
         rover.receive(command);
 
@@ -148,7 +148,7 @@ class RoverTestShould {
     public void move_left_when_direction_is_West() {
         char[] moves = new char[]{'l'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'W');
+        Rover rover = new Rover(1, 1, 'W', 4);
 
         rover.receive(command);
 
@@ -159,7 +159,7 @@ class RoverTestShould {
     public void move_left_when_direction_is_South() {
         char[] moves = new char[]{'l'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'S');
+        Rover rover = new Rover(1, 1, 'S', 4);
 
         rover.receive(command);
 
@@ -170,7 +170,7 @@ class RoverTestShould {
     public void move_left_when_direction_is_North() {
         char[] moves = new char[]{'l'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'N');
+        Rover rover = new Rover(1, 1, 'N', 4);
 
         rover.receive(command);
 
@@ -181,7 +181,7 @@ class RoverTestShould {
     public void move_right_when_direction_is_East() {
         char[] moves = new char[]{'r'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'E');
+        Rover rover = new Rover(1, 1, 'E', 4);
 
         rover.receive(command);
 
@@ -192,7 +192,7 @@ class RoverTestShould {
     public void move_right_when_direction_is_West() {
         char[] moves = new char[]{'r'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'W');
+        Rover rover = new Rover(1, 1, 'W', 4);
 
         rover.receive(command);
 
@@ -203,7 +203,7 @@ class RoverTestShould {
     public void move_right_when_direction_is_South() {
         char[] moves = new char[]{'r'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'S');
+        Rover rover = new Rover(1, 1, 'S', 4);
 
         rover.receive(command);
 
@@ -214,7 +214,7 @@ class RoverTestShould {
     public void move_right_when_direction_is_North() {
         char[] moves = new char[]{'r'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'N');
+        Rover rover = new Rover(1, 1, 'N', 4);
 
         rover.receive(command);
 
@@ -225,7 +225,7 @@ class RoverTestShould {
     public void wrap_at_West_edge() {
         char[] moves = new char[]{'f'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'W');
+        Rover rover = new Rover(1, 1, 'W', 4);
 
         rover.receive(command);
 
@@ -236,7 +236,7 @@ class RoverTestShould {
     public void wrap_at_East_edge() {
         char[] moves = new char[]{'f'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(4, 1, 'E');
+        Rover rover = new Rover(4, 1, 'E', 4);
 
         rover.receive(command);
 
@@ -247,7 +247,7 @@ class RoverTestShould {
     public void wrap_at_North_edge() {
         char[] moves = new char[]{'f'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 4, 'N');
+        Rover rover = new Rover(1, 4, 'N', 4);
 
         rover.receive(command);
 
@@ -258,7 +258,7 @@ class RoverTestShould {
     public void wrap_at_South_edge() {
         char[] moves = new char[]{'f'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'S');
+        Rover rover = new Rover(1, 1, 'S', 4);
 
         rover.receive(command);
 
