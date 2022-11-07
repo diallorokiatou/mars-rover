@@ -41,11 +41,11 @@ public class Position {
         return point + ":" + direction.toString();
     }
 
-    public Point moveBackward() {
-        return direction.moveBackward(point);
+    public void moveBackward() {
+        direction.moveBackward(point);
     }
 
-    public Point moveForward() {
-        return direction.moveForward(point);
+    public void moveForward() {
+        direction.moveForward(point);
     }
 }
