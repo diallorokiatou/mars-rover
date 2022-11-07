@@ -27,10 +27,6 @@ public class Rover {
         if(commands.size() < 1) return;
         for(Command command : commands.getCommands()){
             Rover rover = command.execute(point, direction);
-
-
-
-           if(rover.point.getY() == 0) rover.point.setY(capacity);
             setRover(rover);
         }
     }

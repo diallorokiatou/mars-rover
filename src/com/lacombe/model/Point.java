@@ -21,7 +21,7 @@ public class Point {
 
     public void decrementY() {
         y -= 1;
-
+        if(y == 0) y = capacity;
     }
 
     public void incrementX() {
