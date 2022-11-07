@@ -30,7 +30,7 @@ class RoverTestShould {
         Rover rover = new Rover(1, 1, 'E');
 
         Throwable exception = assertThrows(NullPointerException.class,
-                () -> {rover.move(commands);});
+                () -> {rover.receive(commands);});
 
         assertEquals("1:1:E", rover.toString());
     }
@@ -40,7 +40,7 @@ class RoverTestShould {
         Commands commands = new Commands(command);
 
         Rover rover = new Rover(1, 1, 'E');
-        rover.move(commands);
+        rover.receive(commands);
 
         assertEquals("1:1:E", rover.toString());
     }
@@ -51,7 +51,7 @@ class RoverTestShould {
         Commands commands = new Commands(command);
 
         Rover rover = new Rover(1, 1, 'E');
-        rover.move(commands);
+        rover.receive(commands);
 
         assertEquals("2:1:E", rover.toString());
     }
@@ -62,7 +62,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'W');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("0:1:W", rover.toString());
     }
@@ -73,7 +73,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'S');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:0:S", rover.toString());
     }
@@ -84,7 +84,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'N');
         
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:2:N", rover.toString());
     }
@@ -95,7 +95,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'E');
         
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("0:1:E", rover.toString());
     }
@@ -106,7 +106,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'W');
         
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("2:1:W", rover.toString());
     }
@@ -117,7 +117,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'S');
         
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:2:S", rover.toString());
     }
@@ -128,7 +128,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'N');
         
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:0:N", rover.toString());
     }
@@ -139,7 +139,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'E');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:1:N", rover.toString());
     }
@@ -150,7 +150,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'W');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:1:S", rover.toString());
     }
@@ -161,7 +161,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'S');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:1:E", rover.toString());
     }
@@ -172,7 +172,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'N');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:1:W", rover.toString());
     }
@@ -183,7 +183,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'E');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:1:S", rover.toString());
     }
@@ -194,7 +194,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'W');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:1:N", rover.toString());
     }
@@ -205,7 +205,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'S');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:1:W", rover.toString());
     }
@@ -216,7 +216,7 @@ class RoverTestShould {
         Commands command = new Commands(moves);
         Rover rover = new Rover(1, 1, 'N');
 
-        rover.move(command);
+        rover.receive(command);
 
         assertEquals("1:1:E", rover.toString());
     }

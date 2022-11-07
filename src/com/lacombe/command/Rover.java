@@ -20,7 +20,7 @@ public class Rover {
         this.direction = direction;
     }
 
-    public void move(Commands commands) {
+    public void receive(Commands commands) {
         if(commands == null)
             throw new NullPointerException("commands can't be null");
         if(commands.size() < 1) return;
@@ -28,7 +28,6 @@ public class Rover {
             Rover rover = command.execute(point, direction);
             setRover(rover);
         }
-
     }
 
     private void setRover(Rover rover) {
