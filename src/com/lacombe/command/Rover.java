@@ -17,13 +17,8 @@ public class Rover {
             throw new NullPointerException("commands can't be null");
         if(commands.size() < 1) return;
         for(Command command : commands.getCommands()){
-            Position position = command.execute(this.position);
-            setPosition(position);
+            command.execute(this.position);
         }
-    }
-
-    private void setPosition(Position position) {
-        this.position = position;
     }
 
     @Override
