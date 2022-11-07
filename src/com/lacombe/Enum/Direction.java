@@ -7,92 +7,92 @@ import java.security.InvalidParameterException;
 public enum Direction {
     North('N'){
         @Override
-        public Direction getLeft() {
+        public Direction turnLeft() {
             return Direction.West;
         }
 
         @Override
-        public Direction getRight() {
+        public Direction turnRight() {
             return Direction.East;
         }
 
         @Override
-        public Point getForward(Point point) {
+        public Point moveForward(Point point) {
             point.incrementY();
             return point;
         }
 
         @Override
-        public Point getBackward(Point point) {
+        public Point moveBackward(Point point) {
             point.decrementY();
             return point;
         }
     },
     South('S'){
         @Override
-        public Direction getLeft() {
+        public Direction turnLeft() {
             return Direction.East;
         }
 
         @Override
-        public Direction getRight() {
+        public Direction turnRight() {
             return Direction.West;
         }
 
         @Override
-        public Point getForward(Point point) {
+        public Point moveForward(Point point) {
             point.decrementY();
             return point;
         }
 
         @Override
-        public Point getBackward(Point point) {
+        public Point moveBackward(Point point) {
             point.incrementY();
             return point;
         }
     },
     East('E') {
         @Override
-        public Direction getLeft() {
+        public Direction turnLeft() {
             return Direction.North;
         }
 
         @Override
-        public Direction getRight() {
+        public Direction turnRight() {
             return Direction.South;
         }
 
         @Override
-        public Point getForward(Point point) {
+        public Point moveForward(Point point) {
             point.incrementX();
             return point;
         }
 
         @Override
-        public Point getBackward(Point point) {
+        public Point moveBackward(Point point) {
             point.decrementX();
             return point;
         }
     },
     West('W') {
         @Override
-        public Direction getLeft() {
+        public Direction turnLeft() {
             return Direction.South;
         }
 
         @Override
-        public Direction getRight() {
+        public Direction turnRight() {
             return Direction.North;
         }
 
         @Override
-        public Point getForward(Point point) {
+        public Point moveForward(Point point) {
             point.decrementX();
             return point;
         }
 
         @Override
-        public Point getBackward(Point point) {
+        public Point moveBackward(Point point) {
             point.incrementX();
             return point;
         }
@@ -112,13 +112,13 @@ public enum Direction {
         throw new InvalidParameterException("Invalid direction char : " + directionChar);
     }
 
-    public abstract Direction getLeft();
+    public abstract Direction turnLeft();
 
-    public abstract Direction getRight();
+    public abstract Direction turnRight();
 
-    public abstract Point getForward(Point point);
+    public abstract Point moveForward(Point point);
 
-    public abstract Point getBackward(Point point);
+    public abstract Point moveBackward(Point point);
 
     @Override
     public String toString() {

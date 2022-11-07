@@ -9,27 +9,27 @@ public enum Command {
     FORWARD('f'){
         @Override
         public Rover execute(Point point, Direction direction) {
-            point = direction.getForward(point);
+            point = direction.moveForward(point);
             return new Rover(point, direction);
         }
     },
     BACKWARD('b') {
         @Override
         public Rover execute(Point point, Direction direction) {
-            point = direction.getBackward(point);
+            point = direction.moveBackward(point);
             return new Rover(point, direction);
         }
     },
     LEFT('l') {
         @Override
         public Rover execute(Point point, Direction direction) {
-            return new Rover(point, direction.getLeft());
+            return new Rover(point, direction.turnLeft());
         }
     },
     RIGHT('r') {
         @Override
         public Rover execute(Point point, Direction direction) {
-            return new Rover(point, direction.getRight());
+            return new Rover(point, direction.turnRight());
         }
     };
 
