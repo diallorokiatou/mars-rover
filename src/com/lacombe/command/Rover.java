@@ -6,15 +6,13 @@ import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Point;
 import src.com.lacombe.model.Position;
 
-import java.util.List;
-
 public class Rover {
     public Grid grid;
     Position position;
 
     public Rover(int x, int y, char direction, int capacity) {
         position = new Position(x, y,direction, capacity);
-        List obstacles = List.of(new Point(2, 4, capacity), new Point(3, 2, capacity));
+        Point[] obstacles = new Point[]{new Point(2, 4, capacity), new Point(3, 2, capacity)};
         grid = new Grid(capacity, obstacles);
     }
 

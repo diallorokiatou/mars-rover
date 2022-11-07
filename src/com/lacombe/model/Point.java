@@ -52,4 +52,7 @@ public class Point {
         return Objects.hash(x, y);
     }
 
+    public boolean isLessOrEqualToCapacity() {
+        return x <= capacity && y <= capacity;
+    }
 }
