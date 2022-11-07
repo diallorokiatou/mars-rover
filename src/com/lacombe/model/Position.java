@@ -32,6 +32,10 @@ public class Position {
         return direction.turnLeft();
     }
 
+    public Direction turnRight(){
+        return direction.turnRight();
+    }
+
     @Override
     public String toString() {
         return point + ":" + direction.toString();

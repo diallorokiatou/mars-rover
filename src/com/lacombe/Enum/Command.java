@@ -33,8 +33,7 @@ public enum Command {
     RIGHT('r') {
         @Override
         public Position execute(Position position) {
-            position.setDirection(position.getDirection()
-                    .turnRight());
+            position.setDirection(position.turnRight());
             return position;
         }
     };
