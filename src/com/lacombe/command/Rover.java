@@ -18,10 +18,11 @@ public class Rover {
         grid = new Grid(capacity, obstacles);
     }
 
-    public void receive(Commands commands) {
-        if(commands == null)
+    public void receive(char[] commandList) {
+        if(commandList == null)
             throw new NullPointerException("commands can't be null");
-        if(commands.size() < 1) return;
+        if(commandList.length < 1) return;
+        Commands commands = new Commands(commandList);
         for(Command command : commands.getCommands()){
             command.execute(this.position);
         }

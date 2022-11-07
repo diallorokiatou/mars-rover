@@ -2,7 +2,6 @@ package src.test.com.lacombe.command;
 
 import org.junit.jupiter.api.Test;
 import src.com.lacombe.command.Rover;
-import src.com.lacombe.model.Commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -24,22 +23,21 @@ class RoverTestShould {
     }
 
     @Test
-    public void throw_illegal_argument_error_wen_commands_is_null() {
-        Commands commands = null;
+    public void throw_illegal_argument_error_when_commands_is_null() {
+        char[] commands = null;
 
         Rover rover = new Rover(1, 1, 'E', 4);
 
-        Throwable exception = assertThrows(NullPointerException.class,
-                () -> {rover.receive(commands);});
+        assertThrows(NullPointerException.class,
+                () -> rover.receive(commands));
 
         assertEquals("1:1:E", rover.toString());
     }
     @Test
     public void not_move_when_commands_size_is_less_than_1() {
-        char[] command = new char[]{};
-        Commands commands = new Commands(command);
-
+        char[] commands = new char[]{};
         Rover rover = new Rover(1, 1, 'E', 4);
+        
         rover.receive(commands);
 
         assertEquals("1:1:E", rover.toString());
@@ -47,10 +45,9 @@ class RoverTestShould {
 
     @Test
    public void move_forward_when_direction_is_East() {
-        char[] command = new char[]{'f'};
-        Commands commands = new Commands(command);
-
+        char[] commands = new char[]{'f'};
         Rover rover = new Rover(1, 1, 'E', 4);
+        
         rover.receive(commands);
 
         assertEquals("2:1:E", rover.toString());
@@ -58,222 +55,220 @@ class RoverTestShould {
 
    @Test
     public void move_forward_when_direction_is_West() {
-        char[] moves = new char[]{'f'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'f'};
+        
         Rover rover = new Rover(2, 1, 'W', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:W", rover.toString());
     }
 
     @Test
     public void move_forward_when_direction_is_South() {
-        char[] moves = new char[]{'f'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'f'};
+        
         Rover rover = new Rover(1, 2, 'S', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:S", rover.toString());
     }
 
     @Test
     public void move_forward_when_direction_is_North() {
-        char[] moves = new char[]{'f'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'f'};
+        
         Rover rover = new Rover(1, 1, 'N', 4);
         
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:2:N", rover.toString());
     }
 
     @Test
     public void move_backward_when_direction_is_East() {
-        char[] moves = new char[]{'b'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'b'};
+        
         Rover rover = new Rover(2, 1, 'E', 4);
         
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:E", rover.toString());
     }
 
     @Test
     public void move_backward_when_direction_is_West() {
-        char[] moves = new char[]{'b'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'b'};
+        
         Rover rover = new Rover(1, 1, 'W', 4);
         
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("2:1:W", rover.toString());
     }
 
     @Test
     public void move_backward_when_direction_is_South() {
-        char[] moves = new char[]{'b'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'b'};
+        
         Rover rover = new Rover(1, 1, 'S', 4);
         
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:2:S", rover.toString());
     }
 
     @Test
     public void move_backward_when_direction_is_North() {
-        char[] moves = new char[]{'b'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'b'};
+        
         Rover rover = new Rover(1, 2, 'N', 4);
         
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:N", rover.toString());
     }
 
     @Test
     public void move_left_when_direction_is_East() {
-        char[] moves = new char[]{'l'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'l'};
+        
         Rover rover = new Rover(1, 1, 'E', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:N", rover.toString());
     }
 
     @Test
     public void move_left_when_direction_is_West() {
-        char[] moves = new char[]{'l'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'l'};
+        
         Rover rover = new Rover(1, 1, 'W', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:S", rover.toString());
     }
 
     @Test
     public void move_left_when_direction_is_South() {
-        char[] moves = new char[]{'l'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'l'};
+        
         Rover rover = new Rover(1, 1, 'S', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:E", rover.toString());
     }
 
     @Test
     public void move_left_when_direction_is_North() {
-        char[] moves = new char[]{'l'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'l'};
+        
         Rover rover = new Rover(1, 1, 'N', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:W", rover.toString());
     }
 
     @Test
     public void move_right_when_direction_is_East() {
-        char[] moves = new char[]{'r'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'r'};
+        
         Rover rover = new Rover(1, 1, 'E', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:S", rover.toString());
     }
 
     @Test
     public void move_right_when_direction_is_West() {
-        char[] moves = new char[]{'r'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'r'};
+        
         Rover rover = new Rover(1, 1, 'W', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:N", rover.toString());
     }
 
     @Test
     public void move_right_when_direction_is_South() {
-        char[] moves = new char[]{'r'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'r'};
+        
         Rover rover = new Rover(1, 1, 'S', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:W", rover.toString());
     }
 
     @Test
     public void move_right_when_direction_is_North() {
-        char[] moves = new char[]{'r'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'r'};
+        
         Rover rover = new Rover(1, 1, 'N', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:E", rover.toString());
     }
 
     @Test
     public void wrap_at_West_edge() {
-        char[] moves = new char[]{'f'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'f'};
+        
         Rover rover = new Rover(1, 1, 'W', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("4:1:W", rover.toString());
     }
 
     @Test
     public void wrap_at_East_edge() {
-        char[] moves = new char[]{'f'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'f'};
+        
         Rover rover = new Rover(4, 1, 'E', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:E", rover.toString());
     }
 
     @Test
     public void wrap_at_North_edge() {
-        char[] moves = new char[]{'f'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'f'};
+        
         Rover rover = new Rover(1, 4, 'N', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:1:N", rover.toString());
     }
 
     @Test
     public void wrap_at_South_edge() {
-        char[] moves = new char[]{'f'};
-        Commands command = new Commands(moves);
+        char[] commands = new char[]{'f'};
+        
         Rover rover = new Rover(1, 1, 'S', 4);
 
-        rover.receive(command);
+        rover.receive(commands);
 
         assertEquals("1:4:S", rover.toString());
     }
 
     @Test
     public void move_to_position_2_1_S_and_report_obstacle_at_position_2_4() {
-        char[] moves = new char[]{'f'};
-        Commands commandes = new Commands(moves);
+        char[] commands = new char[]{'f'};
         Rover rover = new Rover(2, 1, 'S', 4);
-
-
+        
         Throwable exception = assertThrows(RuntimeException.class,
-                () -> {rover.receive(commandes);});
+                () -> rover.receive(commands));
         assertEquals("An obstacle is detected at position 2:4; The current position is 2:1:S", exception.getMessage());
     }
 }
