@@ -1,5 +1,6 @@
 package src.com.lacombe.Enum;
 
+import src.com.lacombe.command.Rover;
 import src.com.lacombe.model.Point;
 
 import java.security.InvalidParameterException;
@@ -41,8 +42,12 @@ public enum Direction {
 
         @Override
         public Point moveForward(Point point) {
+            String message = "; The current position is " + point.toString() + ":" + this.toString();
             point.decrementY();
+            if(Rover.obstacle.equals(point))
+                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
+
         }
 
         @Override
