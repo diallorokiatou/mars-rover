@@ -12,14 +12,14 @@ class RoverTestShould {
 
     @Test
     public void init_the_rover_starting_Rover() {
-        Rover rover_starting_at_x_0_y_0_direction_E = new Rover(0,0, 'E');
-        Rover rover_starting_at_x_0_y_1_direction_W = new Rover(0, 1, 'W');
-        Rover rover_starting_at_x_1_y_0_direction_N = new Rover(1, 0, 'N');
+        Rover rover_starting_at_x_1_y_1_direction_E = new Rover(1,1, 'E');
+        Rover rover_starting_at_x_1_y_2_direction_W = new Rover(1, 2, 'W');
+        Rover rover_starting_at_x_2_y_1_direction_N = new Rover(2, 1, 'N');
         Rover rover_starting_at_x_1_y_1_direction_S = new Rover(1, 1, 'S');
 
-        assertEquals("0:0:E", rover_starting_at_x_0_y_0_direction_E.toString());
-        assertEquals("0:1:W", rover_starting_at_x_0_y_1_direction_W.toString());
-        assertEquals("1:0:N", rover_starting_at_x_1_y_0_direction_N.toString());
+        assertEquals("1:1:E", rover_starting_at_x_1_y_1_direction_E.toString());
+        assertEquals("1:2:W", rover_starting_at_x_1_y_2_direction_W.toString());
+        assertEquals("2:1:N", rover_starting_at_x_2_y_1_direction_N.toString());
         assertEquals("1:1:S", rover_starting_at_x_1_y_1_direction_S.toString());
     }
 
@@ -60,22 +60,22 @@ class RoverTestShould {
     public void move_forward_when_direction_is_West() {
         char[] moves = new char[]{'f'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'W');
+        Rover rover = new Rover(2, 1, 'W');
 
         rover.receive(command);
 
-        assertEquals("0:1:W", rover.toString());
+        assertEquals("1:1:W", rover.toString());
     }
 
     @Test
     public void move_forward_when_direction_is_South() {
         char[] moves = new char[]{'f'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'S');
+        Rover rover = new Rover(1, 2, 'S');
 
         rover.receive(command);
 
-        assertEquals("1:0:S", rover.toString());
+        assertEquals("1:1:S", rover.toString());
     }
 
     @Test
