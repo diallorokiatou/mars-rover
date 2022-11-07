@@ -53,20 +53,7 @@ public enum Command {
     RIGHT('r') {
         @Override
         public Rover execute(Point point, Direction direction) {
-            if(direction == Direction.North){
-                direction = Direction.East;
-                return new Rover(point, direction);
-            }
-            if(direction == Direction.South){
-                direction = Direction.West;
-                return new Rover(point, direction);
-            }
-            if(direction == Direction.East){
-                direction = Direction.South;
-                return new Rover(point, direction);
-            }
-            direction = Direction.North;
-            return new Rover(point, direction);
+            return new Rover(point, direction.getRight());
         }
     };
 

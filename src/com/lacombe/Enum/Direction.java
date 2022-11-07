@@ -8,11 +8,21 @@ public enum Direction {
         public Direction getLeft() {
             return Direction.West;
         }
+
+        @Override
+        public Direction getRight() {
+            return Direction.East;
+        }
     },
     South('S'){
         @Override
         public Direction getLeft() {
             return Direction.East;
+        }
+
+        @Override
+        public Direction getRight() {
+            return Direction.West;
         }
     },
     East('E') {
@@ -20,11 +30,21 @@ public enum Direction {
         public Direction getLeft() {
             return Direction.North;
         }
+
+        @Override
+        public Direction getRight() {
+            return Direction.South;
+        }
     },
     West('W') {
         @Override
         public Direction getLeft() {
             return Direction.South;
+        }
+
+        @Override
+        public Direction getRight() {
+            return Direction.North;
         }
     };
 
@@ -43,6 +63,8 @@ public enum Direction {
     }
 
     public abstract Direction getLeft();
+
+    public abstract Direction getRight();
 
     @Override
     public String toString() {
