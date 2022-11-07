@@ -9,12 +9,12 @@ import src.com.lacombe.model.Position;
 import java.util.List;
 
 public class Rover {
-    public static Grid grid;
+    public Grid grid;
     Position position;
 
     public Rover(int x, int y, char direction, int capacity) {
         position = new Position(x, y,direction, capacity);
-        List obstacles = List.of(new Point(2, 4, capacity));
+        List obstacles = List.of(new Point(2, 4, capacity), new Point(3, 2, capacity));
         grid = new Grid(capacity, obstacles);
     }
 
@@ -24,7 +24,7 @@ public class Rover {
         if(commandList.length < 1) return;
         Commands commands = new Commands(commandList);
         for(Command command : commands.getCommands()){
-            command.execute(this.position);
+            command.execute(this.position, this.grid);
         }
     }
 

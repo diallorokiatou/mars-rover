@@ -1,6 +1,6 @@
 package src.com.lacombe.Enum;
 
-import src.com.lacombe.command.Rover;
+import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Point;
 
 import java.security.InvalidParameterException;
@@ -18,13 +18,13 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
+        public Point moveForward(Point point, Grid grid) {
             point.incrementY();
             return point;
         }
 
         @Override
-        public Point moveBackward(Point point) {
+        public Point moveBackward(Point point, Grid grid) {
             point.decrementY();
             return point;
         }
@@ -41,17 +41,19 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
+        public Point moveForward(Point point, Grid grid) {
             String message = "; The current position is " + point.toString() + ":" + this.toString();
             point.decrementY();
-            Rover.grid.hasObstacle(point, message);
+            if(grid.hasObstacle(point, message)) return null;
             return point;
 
         }
 
         @Override
-        public Point moveBackward(Point point) {
+        public Point moveBackward(Point point, Grid grid) {
+            String message = "; The current position is " + point.toString() + ":" + this.toString();
             point.incrementY();
+            if(grid.hasObstacle(point, message)) return null;
             return point;
         }
     },
@@ -67,14 +69,18 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
+        public Point moveForward(Point point, Grid grid) {
+            String message = "; The current position is " + point.toString() + ":" + this.toString();
             point.incrementX();
+            if(grid.hasObstacle(point, message)) return null;
             return point;
         }
 
         @Override
-        public Point moveBackward(Point point) {
+        public Point moveBackward(Point point, Grid grid) {
+            String message = "; The current position is " + point.toString() + ":" + this.toString();
             point.decrementX();
+            if(grid.hasObstacle(point, message)) return null;
             return point;
         }
     },
@@ -90,13 +96,13 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
+        public Point moveForward(Point point, Grid grid) {
             point.decrementX();
             return point;
         }
 
         @Override
-        public Point moveBackward(Point point) {
+        public Point moveBackward(Point point, Grid grid) {
             point.incrementX();
             return point;
         }
@@ -120,9 +126,9 @@ public enum Direction {
 
     public abstract Direction turnRight();
 
-    public abstract Point moveForward(Point point);
+    public abstract Point moveForward(Point point, Grid grid);
 
-    public abstract Point moveBackward(Point point);
+    public abstract Point moveBackward(Point point, Grid grid);
 
     @Override
     public String toString() {

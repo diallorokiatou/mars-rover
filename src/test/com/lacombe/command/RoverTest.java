@@ -263,7 +263,7 @@ class RoverTestShould {
     }
 
     @Test
-    public void move_to_position_2_1_S_and_report_obstacle_at_position_2_4() {
+    public void move_forward_to_position_2_1_S_and_report_obstacle_at_position_2_4() {
         char[] commands = new char[]{'f'};
         Rover rover = new Rover(2, 1, 'S', 4);
         
@@ -271,4 +271,17 @@ class RoverTestShould {
                 () -> rover.receive(commands));
         assertEquals("An obstacle is detected at position 2:4; The current position is 2:1:S", exception.getMessage());
     }
+
+    @Test
+    public void move_backward_to_position_2_1_E_and_report_obstacle_at_position_1_1() {
+        char[] commands = new char[]{'b'};
+        Rover rover = new Rover(4, 2, 'E', 4);
+
+        Throwable exception = assertThrows(RuntimeException.class,
+                () -> rover.receive(commands));
+
+        assertEquals("An obstacle is detected at position 3:2; The current position is 4:2:E", exception.getMessage());
+    }
+
+
 }

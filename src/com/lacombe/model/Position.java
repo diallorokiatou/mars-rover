@@ -25,11 +25,11 @@ public class Position {
         return point + ":" + direction.toString();
     }
 
-    public void moveBackward() {
-        direction.moveBackward(point);
+    public void moveBackward(Grid grid) {
+        direction.moveBackward(point, grid);
     }
 
-    public void moveForward() {
-        direction.moveForward(point);
+    public void moveForward(Grid grid) {
+        direction.moveForward(point, grid);
     }
 }
