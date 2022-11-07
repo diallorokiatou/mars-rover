@@ -231,4 +231,15 @@ class RoverTestShould {
 
         assertEquals("4:1:W", rover.toString());
     }
+
+    @Test
+    public void wrap_at_East_edge() {
+        char[] moves = new char[]{'f'};
+        Commands command = new Commands(moves);
+        Rover rover = new Rover(4, 1, 'E');
+
+        rover.receive(command);
+
+        assertEquals("1:1:E", rover.toString());
+    }
 }
