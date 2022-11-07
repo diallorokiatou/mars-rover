@@ -48,8 +48,7 @@ public enum Command {
         @Override
         public Rover execute(Point point, Direction direction) {
             if(direction == Direction.North){
-                direction = Direction.West;
-                return new Rover(point, direction);
+                return new Rover(point, direction.getLeft());
             }
             if(direction == Direction.South){
                 direction = Direction.East;
