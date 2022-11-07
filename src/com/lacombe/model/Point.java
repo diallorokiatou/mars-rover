@@ -16,16 +16,17 @@ public class Point {
 
     public void incrementY() {
         y += 1;
+        if(y > capacity) y = 1;
     }
 
     public void decrementY() {
         y -= 1;
+
     }
 
     public void incrementX() {
         x += 1;
         if(x > capacity) x = 1;
-
     }
 
     public void decrementX() {

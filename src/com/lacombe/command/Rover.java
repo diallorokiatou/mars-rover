@@ -29,7 +29,7 @@ public class Rover {
             Rover rover = command.execute(point, direction);
 
 
-           if(rover.point.getY() > capacity) rover.point.setY(1);
+
            if(rover.point.getY() == 0) rover.point.setY(capacity);
             setRover(rover);
         }
