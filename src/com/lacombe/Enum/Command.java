@@ -1,6 +1,5 @@
 package src.com.lacombe.Enum;
 
-import src.com.lacombe.model.Point;
 import src.com.lacombe.model.Position;
 
 import java.security.InvalidParameterException;
@@ -9,16 +8,14 @@ public enum Command {
     FORWARD('f'){
         @Override
         public Position execute(Position position) {
-            Point point = position.moveForward();
-            position.setPoint(point);
+            position.moveForward();
             return position;
         }
     },
     BACKWARD('b') {
         @Override
         public Position execute(Position position) {
-            Point point = position.moveBackward();
-            position.setPoint(point);
+            position.moveBackward();
             return position;
         }
     },
