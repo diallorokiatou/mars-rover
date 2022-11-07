@@ -44,7 +44,7 @@ public enum Direction {
         public Point moveForward(Point point) {
             String message = "; The current position is " + point.toString() + ":" + this.toString();
             point.decrementY();
-            if(Rover.obstacle.equals(point))
+            if(Rover.obstacles.contains(point))
                 throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
 

@@ -5,13 +5,17 @@ import src.com.lacombe.model.Commands;
 import src.com.lacombe.model.Point;
 import src.com.lacombe.model.Position;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rover {
-    public static Point obstacle;
+    public static List<Point> obstacles;
     Position position;
 
     public Rover(int x, int y, char direction, int capacity) {
         position = new Position(x, y,direction, capacity);
-        obstacle = new Point(2,4,capacity);
+        obstacles = new ArrayList<>();
+        obstacles.add(new Point(2, 4, 4));
     }
 
     public void receive(Commands commands) {
