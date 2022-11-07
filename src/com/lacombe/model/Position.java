@@ -12,22 +12,6 @@ public class Position {
         this.direction = Direction.getByChar(direction);
     }
 
-    public Point getPoint() {
-        return point;
-    }
-
-    public void setPoint(Point point) {
-        this.point = point;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
-
     public void turnLeft(){
         direction = direction.turnLeft();
     }
