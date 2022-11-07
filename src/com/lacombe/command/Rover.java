@@ -27,10 +27,10 @@ public class Rover {
         if(commands.size() < 1) return;
         for(Command command : commands.getCommands()){
             Rover rover = command.execute(point, direction);
-           if(rover.point.getX() == 0) rover.point.setX(capacity);
+
            if(rover.point.getX() > capacity) rover.point.setX(1);
            if(rover.point.getY() > capacity) rover.point.setY(1);
-            if(rover.point.getY() == 0) rover.point.setY(capacity);
+           if(rover.point.getY() == 0) rover.point.setY(capacity);
             setRover(rover);
         }
     }

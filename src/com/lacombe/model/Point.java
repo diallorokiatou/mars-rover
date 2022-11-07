@@ -6,9 +6,12 @@ public class Point {
     int x;
     int y;
 
+    int capacity;
+
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
+        this.capacity = 4;
     }
 
     public void incrementY() {
@@ -21,10 +24,12 @@ public class Point {
 
     public void incrementX() {
         x += 1;
+
     }
 
     public void decrementX() {
         x -= 1;
+        if(x == 0) x = capacity;
     }
 
     @Override
