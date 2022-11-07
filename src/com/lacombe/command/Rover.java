@@ -10,9 +10,8 @@ public class Rover {
     public Grid grid;
     Position position;
 
-    public Rover(int x, int y, char direction, int capacity) {
+    public Rover(int x, int y, char direction, int capacity, Point ...obstacles) {
         position = new Position(x, y,direction, capacity);
-        Point[] obstacles = new Point[]{new Point(2, 4, capacity), new Point(3, 2, capacity)};
         grid = new Grid(capacity, obstacles);
     }
 

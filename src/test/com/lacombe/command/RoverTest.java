@@ -2,6 +2,7 @@ package src.test.com.lacombe.command;
 
 import org.junit.jupiter.api.Test;
 import src.com.lacombe.command.Rover;
+import src.com.lacombe.model.Point;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -265,7 +266,9 @@ class RoverTestShould {
     @Test
     public void move_forward_to_position_2_1_S_and_report_obstacle_at_position_2_4() {
         char[] commands = new char[]{'f'};
-        Rover rover = new Rover(2, 1, 'S', 4);
+        Point[] obstacles = new Point[]{new Point(2, 4, 4), new Point(3, 2, 4)};
+
+        Rover rover = new Rover(2, 1, 'S', 4, obstacles);
         
         Throwable exception = assertThrows(RuntimeException.class,
                 () -> rover.receive(commands));
@@ -275,7 +278,8 @@ class RoverTestShould {
     @Test
     public void move_backward_to_position_2_1_E_and_report_obstacle_at_position_1_1() {
         char[] commands = new char[]{'b'};
-        Rover rover = new Rover(4, 2, 'E', 4);
+        Point[] obstacles = new Point[]{new Point(2, 4, 4), new Point(3, 2, 4)};
+        Rover rover = new Rover(4, 2, 'E', 4, obstacles);
 
         Throwable exception = assertThrows(RuntimeException.class,
                 () -> rover.receive(commands));
