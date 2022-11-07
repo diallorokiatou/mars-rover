@@ -1,35 +1,42 @@
 package src.com.lacombe.Enum;
 
-import src.com.lacombe.command.Rover;
 import src.com.lacombe.model.Point;
+import src.com.lacombe.model.Position;
 
 import java.security.InvalidParameterException;
 
 public enum Command {
     FORWARD('f'){
         @Override
-        public Rover execute(Point point, Direction direction) {
-            point = direction.moveForward(point);
-            return new Rover(point, direction);
+        public Position execute(Position position) {
+            Point point = position.getDirection().moveForward(position.getPoint());
+            position.setPoint(point);
+            return position;
         }
     },
     BACKWARD('b') {
         @Override
-        public Rover execute(Point point, Direction direction) {
-            point = direction.moveBackward(point);
-            return new Rover(point, direction);
+        public Position execute(Position position) {
+            Point point = position.getDirection()
+                    .moveBackward(position.getPoint());
+            position.setPoint(point);
+            return position;
         }
     },
     LEFT('l') {
         @Override
-        public Rover execute(Point point, Direction direction) {
-            return new Rover(point, direction.turnLeft());
+        public Position execute(Position position) {
+            position.setDirection(position.getDirection()
+                    .turnLeft());
+            return position;
         }
     },
     RIGHT('r') {
         @Override
-        public Rover execute(Point point, Direction direction) {
-            return new Rover(point, direction.turnRight());
+        public Position execute(Position position) {
+            position.setDirection(position.getDirection()
+                    .turnRight());
+            return position;
         }
     };
 
@@ -48,5 +55,5 @@ public enum Command {
         throw new InvalidParameterException("Invalid command char : " + commandChar);
     }
 
-    public abstract Rover execute(Point point, Direction direction);
+    public abstract Position execute(Position position);
 }
