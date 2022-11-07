@@ -93,11 +93,11 @@ class RoverTestShould {
     public void move_backward_when_direction_is_East() {
         char[] moves = new char[]{'b'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'E');
+        Rover rover = new Rover(2, 1, 'E');
         
         rover.receive(command);
 
-        assertEquals("0:1:E", rover.toString());
+        assertEquals("1:1:E", rover.toString());
     }
 
     @Test
@@ -126,11 +126,11 @@ class RoverTestShould {
     public void move_backward_when_direction_is_North() {
         char[] moves = new char[]{'b'};
         Commands command = new Commands(moves);
-        Rover rover = new Rover(1, 1, 'N');
+        Rover rover = new Rover(1, 2, 'N');
         
         rover.receive(command);
 
-        assertEquals("1:0:N", rover.toString());
+        assertEquals("1:1:N", rover.toString());
     }
 
     @Test
