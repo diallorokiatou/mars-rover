@@ -32,8 +32,8 @@ public class Position {
         direction = direction.turnLeft();
     }
 
-    public Direction turnRight(){
-        return direction.turnRight();
+    public void turnRight(){
+        direction = direction.turnRight();
     }
 
     @Override

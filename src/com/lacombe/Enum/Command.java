@@ -29,7 +29,7 @@ public enum Command {
     RIGHT('r') {
         @Override
         public Position execute(Position position) {
-            position.setDirection(position.turnRight());
+            position.turnRight();
             return position;
         }
     };
