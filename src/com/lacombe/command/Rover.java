@@ -2,20 +2,20 @@ package src.com.lacombe.command;
 
 import src.com.lacombe.Enum.Command;
 import src.com.lacombe.model.Commands;
+import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Point;
 import src.com.lacombe.model.Position;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Rover {
-    public static List<Point> obstacles;
+    public static Grid grid;
     Position position;
 
     public Rover(int x, int y, char direction, int capacity) {
         position = new Position(x, y,direction, capacity);
-        obstacles = new ArrayList<>();
-        obstacles.add(new Point(2, 4, 4));
+        List obstacles = List.of(new Point(2, 4, capacity));
+        grid = new Grid(capacity, obstacles);
     }
 
     public void receive(Commands commands) {
@@ -27,6 +27,9 @@ public class Rover {
         }
     }
 
+    public Grid getGrid() {
+        return grid;
+    }
 
     @Override
     public String toString() {
