@@ -24,6 +24,7 @@ public class Point {
 
     public void incrementX() {
         x += 1;
+        if(x > capacity) x = 1;
 
     }
 
