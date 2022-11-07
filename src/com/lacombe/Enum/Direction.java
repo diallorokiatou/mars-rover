@@ -12,19 +12,19 @@ public enum Direction {
     South('S'){
         @Override
         public Direction getLeft() {
-            return null;
+            return Direction.East;
         }
     },
     East('E') {
         @Override
         public Direction getLeft() {
-            return null;
+            return Direction.North;
         }
     },
     West('W') {
         @Override
         public Direction getLeft() {
-            return null;
+            return Direction.South;
         }
     };
 
