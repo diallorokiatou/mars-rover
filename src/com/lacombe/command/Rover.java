@@ -10,6 +10,7 @@ public class Rover {
 
     Direction direction;
 
+    int capacity = 4;
     public Rover(int x, int y, char direction) {
         this.point = new Point(x, y);
         this.direction = Direction.getByChar(direction);
@@ -26,6 +27,7 @@ public class Rover {
         if(commands.size() < 1) return;
         for(Command command : commands.getCommands()){
             Rover rover = command.execute(point, direction);
+           if(rover.point.getX() == 0) rover.point.setX(capacity);
             setRover(rover);
         }
     }
