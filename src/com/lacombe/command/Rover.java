@@ -12,7 +12,7 @@ public class Rover {
 
     int capacity = 4;
     public Rover(int x, int y, char direction) {
-        this.point = new Point(x, y);
+        this.point = new Point(x, y, capacity);
         this.direction = Direction.getByChar(direction);
     }
 

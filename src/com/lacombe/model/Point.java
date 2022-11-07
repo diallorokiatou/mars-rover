@@ -8,10 +8,10 @@ public class Point {
 
     int capacity;
 
-    public Point(int x, int y) {
+    public Point(int x, int y, int capacity) {
         this.x = x;
         this.y = y;
-        this.capacity = 4;
+        this.capacity = capacity;
     }
 
     public void incrementY() {
