@@ -9,7 +9,7 @@ public enum Command {
     FORWARD('f'){
         @Override
         public Position execute(Position position) {
-            Point point = position.getDirection().moveForward(position.getPoint());
+            Point point = position.moveForward();
             position.setPoint(point);
             return position;
         }
@@ -17,8 +17,7 @@ public enum Command {
     BACKWARD('b') {
         @Override
         public Position execute(Position position) {
-            Point point = position.getDirection()
-                    .moveBackward(position.getPoint());
+            Point point = position.moveBackward();
             position.setPoint(point);
             return position;
         }
