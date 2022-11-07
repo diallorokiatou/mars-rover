@@ -21,6 +21,12 @@ public enum Direction {
             point.incrementY();
             return point;
         }
+
+        @Override
+        public Point getBackward(Point point) {
+            point.decrementY();
+            return point;
+        }
     },
     South('S'){
         @Override
@@ -36,6 +42,12 @@ public enum Direction {
         @Override
         public Point getForward(Point point) {
             point.decrementY();
+            return point;
+        }
+
+        @Override
+        public Point getBackward(Point point) {
+            point.incrementY();
             return point;
         }
     },
@@ -55,6 +67,12 @@ public enum Direction {
             point.incrementX();
             return point;
         }
+
+        @Override
+        public Point getBackward(Point point) {
+            point.decrementX();
+            return point;
+        }
     },
     West('W') {
         @Override
@@ -70,6 +88,12 @@ public enum Direction {
         @Override
         public Point getForward(Point point) {
             point.decrementX();
+            return point;
+        }
+
+        @Override
+        public Point getBackward(Point point) {
+            point.incrementX();
             return point;
         }
     };
@@ -93,6 +117,8 @@ public enum Direction {
     public abstract Direction getRight();
 
     public abstract Point getForward(Point point);
+
+    public abstract Point getBackward(Point point);
 
     @Override
     public String toString() {

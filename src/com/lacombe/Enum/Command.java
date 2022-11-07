@@ -16,19 +16,7 @@ public enum Command {
     BACKWARD('b') {
         @Override
         public Rover execute(Point point, Direction direction) {
-            if(direction == Direction.North){
-                point.decrementY();
-                return new Rover(point, direction);
-            }
-            if(direction == Direction.South){
-                point.incrementY();
-                return new Rover(point, direction);
-            }
-            if(direction == Direction.East){
-                point.decrementX();
-                return new Rover(point, direction);
-            }
-            point.incrementX();
+            point = direction.getBackward(point);
             return new Rover(point, direction);
         }
     },
