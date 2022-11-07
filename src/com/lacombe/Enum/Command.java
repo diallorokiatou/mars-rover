@@ -22,7 +22,7 @@ public enum Command {
     LEFT('l') {
         @Override
         public Position execute(Position position) {
-            position.setDirection(position.turnLeft());
+            position.turnLeft();
             return position;
         }
     },
