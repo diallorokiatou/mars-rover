@@ -17,7 +17,6 @@ public class Rover {
     public void receive(char[] commandList) {
         if(commandList == null)
             throw new NullPointerException("commands can't be null");
-        if(commandList.length < 1) return;
         Commands commands = new Commands(commandList);
         for(Command command : commands.getCommands()){
             command.execute(this.position, this.grid);
