@@ -38,8 +38,8 @@ public class Point{
         return new Point(x - 1,y,capacity);
     }
 
-    private boolean isNumberEqualToZero(int y) {
-        return y == 0;
+    private boolean isNumberEqualToZero(int number) {
+        return number == 0;
     }
 
     private boolean isIntSuperiorThanCapacity(int number) {
