@@ -8,9 +8,9 @@ public class Grid {
     public Set<Point> obstacles;
     int capacity;
 
-    public Grid(int capacity, Point ...points) {
+    public Grid(int capacity, Point ...obstaclePoints) {
         this.capacity = capacity;
-        obstacles = Arrays.stream(points).filter(Point::isLessOrEqualToCapacity).collect(Collectors.toSet());
+        obstacles = Arrays.stream(obstaclePoints).filter(Point::isLessOrEqualToCapacity).collect(Collectors.toSet());
     }
 
     public boolean hasObstacleAt(Point point){
