@@ -11,11 +11,11 @@ public record Position(Point point, Direction direction) {
     }
 
     public Position moveBackward() {
-        return new Position(direction.moveBackward(point), direction);
+        return direction.moveBackward(point);
     }
 
     public Position moveForward() {
-        return new Position(direction.moveForward(point), direction);
+        return direction.moveForward(point);
     }
 
     public Direction turnLeft() {

@@ -1,6 +1,7 @@
 package src.com.lacombe.Enum;
 
 import src.com.lacombe.model.Point;
+import src.com.lacombe.model.Position;
 
 import java.security.InvalidParameterException;
 
@@ -17,13 +18,13 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
-            return point.incrementY(1);
+        public Position moveForward(Point point) {
+            return new Position(point.incrementY(1), this);
         }
 
         @Override
-        public Point moveBackward(Point point) {
-            return point.incrementY(-1);
+        public Position moveBackward(Point point) {
+            return new Position(point.incrementY(-1), this);
         }
     },
     South('S'){
@@ -38,13 +39,13 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
-            return point.incrementY(-1);
+        public Position moveForward(Point point) {
+            return new Position(point.incrementY(-1), this);
         }
 
         @Override
-        public Point moveBackward(Point point) {
-            return point.incrementY(1);
+        public Position moveBackward(Point point) {
+            return new Position(point.incrementY(1), this);
         }
     },
     East('E') {
@@ -59,14 +60,14 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
-            return point.incrementX(1);
+        public Position moveForward(Point point) {
+            return new Position(point.incrementX(1), this);
 
         }
 
         @Override
-        public Point moveBackward(Point point) {
-            return point.incrementX(-1);
+        public Position moveBackward(Point point) {
+            return new Position(point.incrementX(-1), this);
         }
     },
     West('W') {
@@ -81,14 +82,14 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
-            return point.incrementX(-1);
+        public Position moveForward(Point point) {
+            return new Position(point.incrementX(-1), this);
 
         }
 
         @Override
-        public Point moveBackward(Point point) {
-            return point.incrementX(1);
+        public Position moveBackward(Point point) {
+            return new Position(point.incrementX(1), this);
         }
     };
 
@@ -110,9 +111,9 @@ public enum Direction {
 
     public abstract Direction turnRight();
 
-    public abstract Point moveForward(Point point);
+    public abstract Position moveForward(Point point);
 
-    public abstract Point moveBackward(Point point);
+    public abstract Position moveBackward(Point point);
 
     @Override
     public String toString() {
