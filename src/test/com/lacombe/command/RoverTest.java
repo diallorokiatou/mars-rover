@@ -37,7 +37,7 @@ class RoverTestShould {
         assertEquals("1:1:E", rover.toString());
     }
     @Test
-    public void not_move_when_commands_size_is_less_than_1() {
+    public void stay_at_same_position_when_commands_is_empty() {
         char[] commands = new char[]{};
         final Grid grid = new Grid(4);
 
@@ -318,7 +318,7 @@ class RoverTestShould {
     }
 
     @Test
-    public void validate_point_in_interval_beetween_one_to_capacity() {
+    public void validate_point_in_interval_between_one_to_capacity() {
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class,
                 () -> new Point(5, 4, 4));
         assertEquals("Point(x,y) must be in range [1,4]",illegalArgumentException.getMessage());
