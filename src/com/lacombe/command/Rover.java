@@ -18,12 +18,11 @@ public class Rover {
         if(commandList == null)
             throw new NullPointerException("commands can't be null");
         Commands commands = new Commands(commandList);
-        String currentPositionMessage = "; The current position is " + this.toString();
+        String currentPositionMessage = "; The current position is " + this;
         for(Command command : commands.getCommands()){
             command.execute(this.position, this.grid);
             if(grid.hasObstacle(this.position.getPoint()))
                 throw new RuntimeException("An obstacle is detected at position " +  position.getPoint() + currentPositionMessage);
-
         }
     }
 

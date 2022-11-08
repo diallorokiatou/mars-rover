@@ -9,13 +9,13 @@ public enum Command {
     FORWARD('f'){
         @Override
         public void execute(Position position, Grid grid) {
-            position.moveForward(grid);
+            position.moveForward();
         }
     },
     BACKWARD('b') {
         @Override
         public void execute(Position position, Grid grid) {
-            position.moveBackward(grid);
+            position.moveBackward();
         }
     },
     LEFT('l') {
