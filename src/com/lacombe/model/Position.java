@@ -4,7 +4,7 @@ import src.com.lacombe.Enum.Direction;
 
 
 public class Position implements Cloneable {
-    Point point;
+    final Point point;
 
     Direction direction;
 

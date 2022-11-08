@@ -1,6 +1,5 @@
 package src.com.lacombe.Enum;
 
-import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Position;
 
 import java.security.InvalidParameterException;
@@ -8,25 +7,25 @@ import java.security.InvalidParameterException;
 public enum Command {
     FORWARD('f'){
         @Override
-        public void execute(Position position, Grid grid) {
+        public void execute(Position position) {
             position.moveForward();
         }
     },
     BACKWARD('b') {
         @Override
-        public void execute(Position position, Grid grid) {
+        public void execute(Position position) {
             position.moveBackward();
         }
     },
     LEFT('l') {
         @Override
-        public void execute(Position position, Grid grid) {
+        public void execute(Position position) {
             position.turnLeft();
         }
     },
     RIGHT('r') {
         @Override
-        public void execute(Position position, Grid grid) {
+        public void execute(Position position) {
             position.turnRight();
         }
     };
@@ -46,5 +45,5 @@ public enum Command {
         throw new InvalidParameterException("Invalid command char : " + commandChar);
     }
 
-    public abstract void execute(Position position, Grid grid);
+    public abstract void execute(Position position);
 }

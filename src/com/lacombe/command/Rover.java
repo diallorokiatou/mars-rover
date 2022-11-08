@@ -22,7 +22,7 @@ public class Rover {
         Commands commands = new Commands(commandList);
         for(Command command : commands.getCommands()){
             Position nextPosition = position.clone();
-            command.execute(nextPosition, grid);
+            command.execute(nextPosition);
             if(grid.hasObstacle(nextPosition.getPoint()))
                 throw new RuntimeException("An obstacle is detected at position " +  nextPosition.getPoint() + "; The current position is " + position);
             position = nextPosition.clone();
