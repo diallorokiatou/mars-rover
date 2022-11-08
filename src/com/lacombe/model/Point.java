@@ -9,7 +9,7 @@ public record Point(int x, int y, int capacity){
             throw new IllegalArgumentException("Point(x,y) must be in range [1," + capacity + "]");
     }
 
-    private static boolean isPointIsWellDefine(int x, int y, int capacity) {
+    private boolean isPointIsWellDefine(int x, int y, int capacity) {
         return x > 0 && y > 0 && x <= capacity && y <= capacity;
     }
 
