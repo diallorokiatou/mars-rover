@@ -316,4 +316,12 @@ class RoverTestShould {
         assertEquals("2:1:S",rover.toString());
     }
 
+    @Test
+    public void validate_point_in_interval_beetween_one_to_capacity() {
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class,
+                () -> new Point(5, 4, 4));
+        assertEquals("Point(x,y) must be in range [1,4]",illegalArgumentException.getMessage());
+
+    }
+
 }

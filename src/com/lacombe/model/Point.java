@@ -4,6 +4,15 @@ import java.util.Objects;
 
 public record Point(int x, int y, int capacity){
 
+    public Point {
+        if (!isPointIsWellDefine(x, y, capacity))
+            throw new IllegalArgumentException("Point(x,y) must be in range [1," + capacity + "]");
+    }
+
+    private static boolean isPointIsWellDefine(int x, int y, int capacity) {
+        return x > 0 && y > 0 && x <= capacity && y <= capacity;
+    }
+
     public Point incrementY() {
         if(isIntSuperiorThanCapacity(y + 1))
             return new Point(x,1,capacity);
