@@ -2,9 +2,9 @@ package src.com.lacombe.model;
 
 import java.util.Objects;
 
-public class Point implements Cloneable{
-    int x;
-    int y;
+public class Point{
+    final int x;
+    final int y;
 
     int capacity;
 
@@ -14,24 +14,36 @@ public class Point implements Cloneable{
         this.capacity = capacity;
     }
 
-    public void incrementY() {
-        y += 1;
-        if(y > capacity) y = 1;
+    public Point incrementY() {
+        if(isIntSuperiorThanCapacity(y + 1))
+            return new Point(x,1,capacity);
+        return new Point(x,y + 1,capacity);
     }
 
-    public void decrementY() {
-        y -= 1;
-        if(y == 0) y = capacity;
+    public Point decrementY() {
+        if(isNumberEqualToZero(y - 1))
+            return new Point(x,capacity,capacity);
+        return new Point(x,y - 1,capacity);
     }
 
-    public void incrementX() {
-        x += 1;
-        if(x > capacity) x = 1;
+    public Point incrementX() {
+        if(isIntSuperiorThanCapacity(x + 1))
+            return new Point(1,y,capacity);
+        return new Point(x+1,y,capacity);
     }
 
-    public void decrementX() {
-        x -= 1;
-        if(x == 0) x = capacity;
+    public Point decrementX() {
+        if(isNumberEqualToZero(x - 1))
+            return new Point(capacity,y,capacity);
+        return new Point(x - 1,y,capacity);
+    }
+
+    private boolean isNumberEqualToZero(int y) {
+        return y == 0;
+    }
+
+    private boolean isIntSuperiorThanCapacity(int number) {
+        return number > capacity;
     }
 
     @Override
@@ -43,25 +55,16 @@ public class Point implements Cloneable{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Point that = (Point) o;
-        return x == that.x && y == that.y;
+        Point point = (Point) o;
+        return x == point.x && y == point.y && capacity == point.capacity;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return Objects.hash(x, y, capacity);
     }
 
     public boolean isLessOrEqualToCapacity() {
         return x <= capacity && y <= capacity;
-    }
-
-    @Override
-    public Point clone() {
-        try {
-            return (Point) super.clone();
-        }catch (Exception e){
-           return new Point(x, y,capacity);
-        }
     }
 }
