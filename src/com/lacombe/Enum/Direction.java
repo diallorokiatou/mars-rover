@@ -17,15 +17,14 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
+        public void moveForward(Point point) {
             point.incrementY();
-            return point;
+
         }
 
         @Override
-        public Point moveBackward(Point point) {
+        public void moveBackward(Point point) {
             point.decrementY();
-            return point;
         }
     },
     South('S'){
@@ -40,16 +39,15 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
+        public void moveForward(Point point) {
             point.decrementY();
-            return point;
+
 
         }
 
         @Override
-        public Point moveBackward(Point point) {
+        public void moveBackward(Point point) {
             point.incrementY();
-            return point;
         }
     },
     East('E') {
@@ -64,15 +62,14 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
+        public void moveForward(Point point) {
             point.incrementX();
-            return point;
+
         }
 
         @Override
-        public Point moveBackward(Point point) {
+        public void moveBackward(Point point) {
             point.decrementX();
-            return point;
         }
     },
     West('W') {
@@ -87,15 +84,14 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point) {
+        public void moveForward(Point point) {
             point.decrementX();
-            return point;
+
         }
 
         @Override
-        public Point moveBackward(Point point) {
+        public void moveBackward(Point point) {
             point.incrementX();
-            return point;
         }
     };
 
@@ -117,9 +113,9 @@ public enum Direction {
 
     public abstract Direction turnRight();
 
-    public abstract Point moveForward(Point point);
+    public abstract void moveForward(Point point);
 
-    public abstract Point moveBackward(Point point);
+    public abstract void moveBackward(Point point);
 
     @Override
     public String toString() {
