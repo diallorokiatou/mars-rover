@@ -19,7 +19,6 @@ public enum Direction {
         @Override
         public void moveForward(Point point) {
             point.incrementY();
-
         }
 
         @Override
@@ -41,8 +40,6 @@ public enum Direction {
         @Override
         public void moveForward(Point point) {
             point.decrementY();
-
-
         }
 
         @Override

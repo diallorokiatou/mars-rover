@@ -21,11 +21,10 @@ public class Rover {
             throw new NullPointerException("commands can't be null");
         Commands commands = new Commands(commandList);
         for(Command command : commands.getCommands()){
-            Position nextPosition = position.clone();
-            command.execute(nextPosition);
+            Position nextPosition = command.execute(position);
             if(grid.hasObstacle(nextPosition.getPoint()))
                 throw new RuntimeException("An obstacle is detected at position " +  nextPosition.getPoint() + "; The current position is " + position);
-            position = nextPosition.clone();
+            position = nextPosition;
         }
     }
 

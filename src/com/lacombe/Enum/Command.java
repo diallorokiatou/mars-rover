@@ -7,26 +7,30 @@ import java.security.InvalidParameterException;
 public enum Command {
     FORWARD('f'){
         @Override
-        public void execute(Position position) {
-            position.moveForward();
+        public Position execute(Position position) {
+            Position nextPosition = position.clone();
+            nextPosition.moveForward();
+            return nextPosition;
         }
     },
     BACKWARD('b') {
         @Override
-        public void execute(Position position) {
-            position.moveBackward();
+        public Position execute(Position position) {
+            Position nextPosition = position.clone();
+            nextPosition.moveBackward();
+            return nextPosition;
         }
     },
     LEFT('l') {
         @Override
-        public void execute(Position position) {
-            position.turnLeft();
+        public Position execute(Position position) {
+            return new Position(position.getPoint(), position.getDirection().turnLeft());
         }
     },
     RIGHT('r') {
         @Override
-        public void execute(Position position) {
-            position.turnRight();
+        public Position execute(Position position) {
+            return new Position(position.getPoint(), position.getDirection().turnRight());
         }
     };
 
@@ -45,5 +49,5 @@ public enum Command {
         throw new InvalidParameterException("Invalid command char : " + commandChar);
     }
 
-    public abstract void execute(Position position);
+    public abstract Position execute(Position position);
 }

@@ -6,19 +6,11 @@ import src.com.lacombe.Enum.Direction;
 public class Position implements Cloneable {
     final Point point;
 
-    Direction direction;
+    final Direction direction;
 
     public Position(Point point, Direction direction) {
         this.point = point;
         this.direction = direction;
-    }
-
-    public void turnLeft(){
-        direction = direction.turnLeft();
-    }
-
-    public void turnRight(){
-        direction = direction.turnRight();
     }
 
     @Override
@@ -38,6 +30,9 @@ public class Position implements Cloneable {
         return point;
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
     @Override
     public Position clone() {
         return new Position(point.clone(), direction);
