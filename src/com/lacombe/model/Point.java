@@ -2,7 +2,7 @@ package src.com.lacombe.model;
 
 import java.util.Objects;
 
-public class Point {
+public class Point implements Cloneable{
     int x;
     int y;
 
@@ -54,5 +54,14 @@ public class Point {
 
     public boolean isLessOrEqualToCapacity() {
         return x <= capacity && y <= capacity;
+    }
+
+    @Override
+    public Point clone() {
+        try {
+            return (Point) super.clone();
+        }catch (Exception e){
+           return new Point(x, y,capacity);
+        }
     }
 }
