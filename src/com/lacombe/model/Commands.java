@@ -16,14 +16,6 @@ public class Commands {
         }
     }
 
-    public Commands(List<Command> commands) {
-        this.commands = commands;
-    }
-
-    public int size() {
-        return commands.size();
-    }
-
     public List<Command> getCommands() {
         return commands;
     }

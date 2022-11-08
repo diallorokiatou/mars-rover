@@ -21,9 +21,7 @@ public class Grid {
     }
 
     public boolean hasObstacle(Point point){
-        if(obstacles.contains(point))
-            return true;
-        return false;
+        return obstacles.contains(point);
     }
 
     public int getCapacity() {
