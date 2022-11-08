@@ -1,6 +1,5 @@
 package src.com.lacombe.Enum;
 
-import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Point;
 
 import java.security.InvalidParameterException;
@@ -18,20 +17,14 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point, Grid grid) {
-            String message = "; The current position is " + point + ":" + this;
+        public Point moveForward(Point point) {
             point.incrementY();
-            if(grid.hasObstacle(point))
-                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
 
         @Override
-        public Point moveBackward(Point point, Grid grid) {
-            String message = "; The current position is " + point + ":" + this;
+        public Point moveBackward(Point point) {
             point.decrementY();
-            if(grid.hasObstacle(point))
-                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
     },
@@ -47,21 +40,15 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point, Grid grid) {
-            String message = "; The current position is " + point + ":" + this;
+        public Point moveForward(Point point) {
             point.decrementY();
-            if(grid.hasObstacle(point))
-                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
 
         }
 
         @Override
-        public Point moveBackward(Point point, Grid grid) {
-            String message = "; The current position is " + point + ":" + this;
+        public Point moveBackward(Point point) {
             point.incrementY();
-            if(grid.hasObstacle(point))
-                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
     },
@@ -77,20 +64,14 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point, Grid grid) {
-            String message = "; The current position is " + point + ":" + this;
+        public Point moveForward(Point point) {
             point.incrementX();
-            if(grid.hasObstacle(point))
-                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
 
         @Override
-        public Point moveBackward(Point point, Grid grid) {
-            String message = "; The current position is " + point + ":" + this;
+        public Point moveBackward(Point point) {
             point.decrementX();
-            if(grid.hasObstacle(point))
-                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
     },
@@ -106,20 +87,14 @@ public enum Direction {
         }
 
         @Override
-        public Point moveForward(Point point, Grid grid) {
-            String message = "; The current position is " + point + ":" + this;
+        public Point moveForward(Point point) {
             point.decrementX();
-            if(grid.hasObstacle(point))
-                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
 
         @Override
-        public Point moveBackward(Point point, Grid grid) {
-            String message = "; The current position is " + point + ":" + this;
+        public Point moveBackward(Point point) {
             point.incrementX();
-            if(grid.hasObstacle(point))
-                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
     };
@@ -142,9 +117,9 @@ public enum Direction {
 
     public abstract Direction turnRight();
 
-    public abstract Point moveForward(Point point, Grid grid);
+    public abstract Point moveForward(Point point);
 
-    public abstract Point moveBackward(Point point, Grid grid);
+    public abstract Point moveBackward(Point point);
 
     @Override
     public String toString() {
