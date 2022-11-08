@@ -13,7 +13,6 @@ public class Grid {
         obstacles = Arrays.stream(points).filter(Point::isLessOrEqualToCapacity).collect(Collectors.toSet());
     }
 
-
     public boolean hasObstacleAt(Point point){
         return obstacles.contains(point);
     }

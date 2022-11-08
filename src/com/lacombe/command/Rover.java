@@ -1,6 +1,5 @@
 package src.com.lacombe.command;
 
-import src.com.lacombe.Enum.Command;
 import src.com.lacombe.Enum.Direction;
 import src.com.lacombe.model.Commands;
 import src.com.lacombe.model.Grid;
@@ -20,12 +19,12 @@ public class Rover {
         if(commandList == null)
             throw new NullPointerException("commands can't be null");
         Commands commands = new Commands(commandList);
-        for(Command command : commands.getCommands()){
+        commands.getCommands().forEach(command -> {
             Position nextPosition = command.execute(position);
             if(grid.hasObstacleAt(nextPosition.point()))
                 throw new RuntimeException("An obstacle is detected at position " +  nextPosition.point() + "; The current position is " + position);
             position = nextPosition;
-        }
+        });
     }
 
     @Override
