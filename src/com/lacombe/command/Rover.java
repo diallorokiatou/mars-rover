@@ -19,12 +19,8 @@ public class Rover {
         if(commandList == null)
             throw new NullPointerException("commands can't be null");
         Commands commands = new Commands(commandList);
-        commands.getCommands().forEach(command -> {
-            Position nextPosition = command.execute(position);
-            if(grid.hasObstacleAt(nextPosition.point()))
-                throw new RuntimeException("An obstacle is detected at position " +  nextPosition.point() + "; The current position is " + position);
-            position = nextPosition;
-        });
+        position = commands.execute(position, grid);
+
     }
 
     @Override

@@ -16,7 +16,13 @@ public class Commands {
         }
     }
 
-    public List<Command> getCommands() {
-        return commands;
+    public Position execute(Position position, Grid grid){
+        for (Command command : commands) {
+            Position nextPosition = command.execute(position);
+            if (grid.hasObstacleAt(nextPosition.point()))
+                throw new RuntimeException("An obstacle is detected at position " + nextPosition.point() + "; The current position is " + position);
+            position = nextPosition;
+        }
+        return position;
     }
 }
