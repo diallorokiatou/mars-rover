@@ -26,20 +26,17 @@ public class Position {
     }
 
     public void moveBackward(Grid grid) {
-        String currentPositonMessage = getCurrentPositionMessage();
-        direction.moveBackward(this.point);
+        String currentPositionMessage = "; The current position is " + this.toString();
+        direction.moveBackward(point);
         if(grid.hasObstacle(point))
-            throw new RuntimeException("An obstacle is detected at position " +  point.toString() + currentPositonMessage);
+            throw new RuntimeException("An obstacle is detected at position " +  point.toString() + currentPositionMessage);
     }
 
     public void moveForward(Grid grid) {
-        String currentPositionMessage = getCurrentPositionMessage();
+        String currentPositionMessage = "; The current position is " + this.toString();
         direction.moveForward(point);
         if(grid.hasObstacle(point))
             throw new RuntimeException("An obstacle is detected at position " +  point.toString() + currentPositionMessage);
     }
 
-    private String getCurrentPositionMessage() {
-        return "; The current position is " + this.toString();
-    }
 }
