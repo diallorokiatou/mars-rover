@@ -25,4 +25,8 @@ public class Grid {
             return true;
         return false;
     }
+
+    public int getCapacity() {
+        return capacity;
+    }
 }
