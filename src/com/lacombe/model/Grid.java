@@ -20,9 +20,9 @@ public class Grid {
         }
     }
 
-    public boolean hasObstacle(Point point, String message){
+    public boolean hasObstacle(Point point){
         if(obstacles.contains(point))
-            throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
+            return true;
         return false;
     }
 }

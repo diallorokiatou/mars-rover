@@ -19,13 +19,19 @@ public enum Direction {
 
         @Override
         public Point moveForward(Point point, Grid grid) {
+            String message = "; The current position is " + point + ":" + this;
             point.incrementY();
+            if(grid.hasObstacle(point))
+                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
 
         @Override
         public Point moveBackward(Point point, Grid grid) {
+            String message = "; The current position is " + point + ":" + this;
             point.decrementY();
+            if(grid.hasObstacle(point))
+                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
     },
@@ -44,7 +50,8 @@ public enum Direction {
         public Point moveForward(Point point, Grid grid) {
             String message = "; The current position is " + point + ":" + this;
             point.decrementY();
-            if(grid.hasObstacle(point, message)) return null;
+            if(grid.hasObstacle(point))
+                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
 
         }
@@ -53,7 +60,8 @@ public enum Direction {
         public Point moveBackward(Point point, Grid grid) {
             String message = "; The current position is " + point + ":" + this;
             point.incrementY();
-            if(grid.hasObstacle(point, message)) return null;
+            if(grid.hasObstacle(point))
+                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
     },
@@ -72,7 +80,8 @@ public enum Direction {
         public Point moveForward(Point point, Grid grid) {
             String message = "; The current position is " + point + ":" + this;
             point.incrementX();
-            if(grid.hasObstacle(point, message)) return null;
+            if(grid.hasObstacle(point))
+                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
 
@@ -80,7 +89,8 @@ public enum Direction {
         public Point moveBackward(Point point, Grid grid) {
             String message = "; The current position is " + point + ":" + this;
             point.decrementX();
-            if(grid.hasObstacle(point, message)) return null;
+            if(grid.hasObstacle(point))
+                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
     },
@@ -97,13 +107,19 @@ public enum Direction {
 
         @Override
         public Point moveForward(Point point, Grid grid) {
+            String message = "; The current position is " + point + ":" + this;
             point.decrementX();
+            if(grid.hasObstacle(point))
+                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
 
         @Override
         public Point moveBackward(Point point, Grid grid) {
+            String message = "; The current position is " + point + ":" + this;
             point.incrementX();
+            if(grid.hasObstacle(point))
+                throw new RuntimeException("An obstacle is detected at position " +  point.toString() + message );
             return point;
         }
     };
