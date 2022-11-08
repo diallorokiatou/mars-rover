@@ -305,5 +305,16 @@ class RoverTestShould {
         assertEquals("An obstacle is detected at position 3:2; The current position is 4:2:E", exception.getMessage());
     }
 
+    @Test
+    public void don_t_reach_obstacle_at_position_2_4_and_stay_at_position_2_1_S() {
+        char[] commands = new char[]{'f'};
+        Point[] obstacles = new Point[]{new Point(2, 4, 4)};
+        final Grid grid = new Grid(4, obstacles);
+        Rover rover = new Rover(2, 1, 'S', grid);
+
+        Throwable exception = assertThrows(RuntimeException.class,
+                () -> rover.receive(commands));
+        assertEquals("2:1:S",rover.toString());
+    }
 
 }
