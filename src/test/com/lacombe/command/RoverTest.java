@@ -27,11 +27,12 @@ class RoverTestShould {
 
     @Test
     public void throw_illegal_argument_error_when_commands_is_null() {
+        char[] commands = null;
         final Grid grid = new Grid(4);
         Rover rover = new Rover(1, 1, 'E', grid);
 
         assertThrows(NullPointerException.class,
-                () -> rover.receive(null));
+                () -> rover.receive(commands));
 
         assertEquals("1:1:E", rover.toString());
     }
