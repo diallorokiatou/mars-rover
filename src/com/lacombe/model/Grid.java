@@ -1,7 +1,8 @@
 package src.com.lacombe.model;
 
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Grid {
     public Set<Point> obstacles;
@@ -9,18 +10,11 @@ public class Grid {
 
     public Grid(int capacity, Point ...points) {
         this.capacity = capacity;
-        this.obstacles = new HashSet<>();
-        setObstacles(points);
+        obstacles = Arrays.stream(points).filter(Point::isLessOrEqualToCapacity).collect(Collectors.toSet());
     }
 
-    public void setObstacles(Point ...points){
-        for(Point point : points){
-            if(point.isLessOrEqualToCapacity())
-                obstacles.add(point);
-        }
-    }
 
-    public boolean hasObstacle(Point point){
+    public boolean hasObstacleAt(Point point){
         return obstacles.contains(point);
     }
 
