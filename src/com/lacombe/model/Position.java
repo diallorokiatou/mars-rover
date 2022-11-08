@@ -10,12 +10,12 @@ public record Position(Point point, Direction direction) {
         return point + ":" + direction.toString();
     }
 
-    public Point moveBackward() {
-        return direction.moveBackward(point);
+    public Position moveBackward() {
+        return new Position(direction.moveBackward(point), direction);
     }
 
-    public Point moveForward() {
-        return direction.moveForward(point);
+    public Position moveForward() {
+        return new Position(direction.moveForward(point), direction);
     }
 
     public Direction turnLeft() {
