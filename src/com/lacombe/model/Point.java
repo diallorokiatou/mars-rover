@@ -2,17 +2,7 @@ package src.com.lacombe.model;
 
 import java.util.Objects;
 
-public class Point{
-    final int x;
-    final int y;
-
-    int capacity;
-
-    public Point(int x, int y, int capacity) {
-        this.x = x;
-        this.y = y;
-        this.capacity = capacity;
-    }
+public record Point(int x, int y, int capacity){
 
     public Point incrementY() {
         if(isIntSuperiorThanCapacity(y + 1))
@@ -46,6 +36,10 @@ public class Point{
         return number > capacity;
     }
 
+    public boolean isLessOrEqualToCapacity() {
+        return x <= capacity && y <= capacity;
+    }
+
     @Override
     public String toString() {
         return x + ":" + y;
@@ -62,9 +56,5 @@ public class Point{
     @Override
     public int hashCode() {
         return Objects.hash(x, y, capacity);
-    }
-
-    public boolean isLessOrEqualToCapacity() {
-        return x <= capacity && y <= capacity;
     }
 }
