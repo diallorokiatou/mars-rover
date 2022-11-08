@@ -13,28 +13,20 @@ public record Point(int x, int y, int capacity){
         return x > 0 && y > 0 && x <= capacity && y <= capacity;
     }
 
-    public Point incrementY() {
-        if(isIntSuperiorThanCapacity(y + 1))
-            return new Point(x,1,capacity);
-        return new Point(x,y + 1,capacity);
-    }
-
-    public Point decrementY() {
-        if(isNumberEqualToZero(y - 1))
+    public Point incrementY(int increment) {
+        if(isIntSuperiorThanCapacity(y + increment))
+            return new Point(x,increment,capacity);
+        if(isNumberEqualToZero(y + increment))
             return new Point(x,capacity,capacity);
-        return new Point(x,y - 1,capacity);
+        return new Point(x,y + increment,capacity);
     }
 
-    public Point incrementX() {
-        if(isIntSuperiorThanCapacity(x + 1))
+    public Point incrementX(int increment) {
+        if(isIntSuperiorThanCapacity(x + increment))
             return new Point(1,y,capacity);
-        return new Point(x+1,y,capacity);
-    }
-
-    public Point decrementX() {
-        if(isNumberEqualToZero(x - 1))
+        if(isNumberEqualToZero(x + increment))
             return new Point(capacity,y,capacity);
-        return new Point(x - 1,y,capacity);
+        return new Point(x+increment,y,capacity);
     }
 
     private boolean isNumberEqualToZero(int number) {
