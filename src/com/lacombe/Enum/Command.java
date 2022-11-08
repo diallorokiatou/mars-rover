@@ -24,13 +24,13 @@ public enum Command {
     LEFT('l') {
         @Override
         public Position execute(Position position) {
-            return new Position(position.getPoint(), position.getDirection().turnLeft());
+            return new Position(position.getPoint(), position.turnLeft());
         }
     },
     RIGHT('r') {
         @Override
         public Position execute(Position position) {
-            return new Position(position.getPoint(), position.getDirection().turnRight());
+            return new Position(position.getPoint(), position.turnRight());
         }
     };
 

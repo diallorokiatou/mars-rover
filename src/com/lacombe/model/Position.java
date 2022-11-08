@@ -26,15 +26,22 @@ public class Position implements Cloneable {
         direction.moveForward(point);
     }
 
+
+
     public Point getPoint() {
         return point;
     }
-
-    public Direction getDirection() {
-        return direction;
-    }
+    
     @Override
     public Position clone() {
         return new Position(point.clone(), direction);
+    }
+
+    public Direction turnLeft() {
+        return direction.turnLeft();
+    }
+
+    public Direction turnRight() {
+        return  direction.turnRight();
     }
 }
