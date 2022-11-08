@@ -13,7 +13,7 @@ class RoverTestShould {
 
     @Test
     public void init_the_rover_starting_Rover() {
-        Grid grid = grid = new Grid(4);
+        Grid grid = new Grid(4);
         Rover rover_starting_at_x_1_y_1_direction_E = new Rover(1, 1, 'E', grid);
         Rover rover_starting_at_x_1_y_2_direction_W = new Rover(1, 2, 'W', grid);
         Rover rover_starting_at_x_2_y_1_direction_N = new Rover(2, 1, 'N', grid);
@@ -27,12 +27,11 @@ class RoverTestShould {
 
     @Test
     public void throw_illegal_argument_error_when_commands_is_null() {
-        char[] commands = null;
         final Grid grid = new Grid(4);
         Rover rover = new Rover(1, 1, 'E', grid);
 
         assertThrows(NullPointerException.class,
-                () -> rover.receive(commands));
+                () -> rover.receive(null));
 
         assertEquals("1:1:E", rover.toString());
     }
@@ -312,7 +311,7 @@ class RoverTestShould {
         final Grid grid = new Grid(4, obstacles);
         Rover rover = new Rover(2, 1, 'S', grid);
 
-        Throwable exception = assertThrows(RuntimeException.class,
+        assertThrows(RuntimeException.class,
                 () -> rover.receive(commands));
         assertEquals("2:1:S",rover.toString());
     }

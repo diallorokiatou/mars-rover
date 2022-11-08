@@ -22,8 +22,8 @@ public class Rover {
         Commands commands = new Commands(commandList);
         for(Command command : commands.getCommands()){
             Position nextPosition = command.execute(position);
-            if(grid.hasObstacle(nextPosition.getPoint()))
-                throw new RuntimeException("An obstacle is detected at position " +  nextPosition.getPoint() + "; The current position is " + position);
+            if(grid.hasObstacle(nextPosition.point()))
+                throw new RuntimeException("An obstacle is detected at position " +  nextPosition.point() + "; The current position is " + position);
             position = nextPosition;
         }
     }

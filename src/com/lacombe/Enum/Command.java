@@ -8,25 +8,25 @@ public enum Command {
     FORWARD('f'){
         @Override
         public Position execute(Position position) {
-            return new Position(position.moveForward(), position.getDirection());
+            return new Position(position.moveForward(), position.direction());
         }
     },
     BACKWARD('b') {
         @Override
         public Position execute(Position position) {
-            return new Position(position.moveBackward(), position.getDirection());
+            return new Position(position.moveBackward(), position.direction());
         }
     },
     LEFT('l') {
         @Override
         public Position execute(Position position) {
-            return new Position(position.getPoint(), position.turnLeft());
+            return new Position(position.point(), position.turnLeft());
         }
     },
     RIGHT('r') {
         @Override
         public Position execute(Position position) {
-            return new Position(position.getPoint(), position.turnRight());
+            return new Position(position.point(), position.turnRight());
         }
     };
 
