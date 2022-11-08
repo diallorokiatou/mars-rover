@@ -25,10 +25,6 @@ public class Rover {
         }
     }
 
-    public Grid getGrid() {
-        return grid;
-    }
-
     @Override
     public String toString() {
         return position.toString();

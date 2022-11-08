@@ -42,7 +42,7 @@ public enum Direction {
 
         @Override
         public Point moveForward(Point point, Grid grid) {
-            String message = "; The current position is " + point.toString() + ":" + this.toString();
+            String message = "; The current position is " + point + ":" + this;
             point.decrementY();
             if(grid.hasObstacle(point, message)) return null;
             return point;
@@ -51,7 +51,7 @@ public enum Direction {
 
         @Override
         public Point moveBackward(Point point, Grid grid) {
-            String message = "; The current position is " + point.toString() + ":" + this.toString();
+            String message = "; The current position is " + point + ":" + this;
             point.incrementY();
             if(grid.hasObstacle(point, message)) return null;
             return point;
@@ -70,7 +70,7 @@ public enum Direction {
 
         @Override
         public Point moveForward(Point point, Grid grid) {
-            String message = "; The current position is " + point.toString() + ":" + this.toString();
+            String message = "; The current position is " + point + ":" + this;
             point.incrementX();
             if(grid.hasObstacle(point, message)) return null;
             return point;
@@ -78,7 +78,7 @@ public enum Direction {
 
         @Override
         public Point moveBackward(Point point, Grid grid) {
-            String message = "; The current position is " + point.toString() + ":" + this.toString();
+            String message = "; The current position is " + point + ":" + this;
             point.decrementX();
             if(grid.hasObstacle(point, message)) return null;
             return point;
