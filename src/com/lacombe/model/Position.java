@@ -2,14 +2,15 @@ package src.com.lacombe.model;
 
 import src.com.lacombe.Enum.Direction;
 
-public class Position {
+
+public class Position implements Cloneable {
     Point point;
 
     Direction direction;
 
-    public Position(int x, int y,char direction, int capacity) {
-        this.point = new Point(x, y, capacity);
-        this.direction = Direction.getByChar(direction);
+    public Position(Point point, Direction direction) {
+        this.point = point;
+        this.direction = direction;
     }
 
     public void turnLeft(){
@@ -35,5 +36,10 @@ public class Position {
 
     public Point getPoint() {
         return point;
+    }
+
+    @Override
+    public Position clone() {
+        return new Position(point.clone(), direction);
     }
 }
