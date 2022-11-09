@@ -9,7 +9,7 @@ public class GridCell {
         this.hasObstacle = false;
     }
 
-    public void setObstacle() {
+    public void makeImpassable() {
         hasObstacle = true;
     }
 }

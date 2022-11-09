@@ -44,9 +44,8 @@ public class Grid {
             for(int j = 1; j <= size; j++){
                 Point point = new Point(i, j);
                 GridCell gridCell = new GridCell(point);
-                if(obstaclesList.contains(point)) {
-                    gridCell.setObstacle();
-                }
+                if(obstaclesList.contains(point))
+                    gridCell.makeImpassable();
                 cells.add(gridCell);
             }
         }
