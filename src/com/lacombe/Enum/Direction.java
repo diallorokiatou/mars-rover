@@ -4,8 +4,6 @@ import src.com.lacombe.model.Grid;
 import src.com.lacombe.model.Point;
 import src.com.lacombe.model.Position;
 
-import java.security.InvalidParameterException;
-
 public enum Direction {
     North('N'){
         @Override
@@ -97,14 +95,6 @@ public enum Direction {
 
     Direction(char directionChar) {
         this.directionChar = directionChar;
-    }
-
-    public static Direction getByChar(char directionChar){
-        for (Direction direction : Direction.values()) {
-            if(direction.directionChar == directionChar)
-                return direction;
-        }
-        throw new InvalidParameterException("Invalid direction char : " + directionChar);
     }
 
     public abstract Direction turnLeft();

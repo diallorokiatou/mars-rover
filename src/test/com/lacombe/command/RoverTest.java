@@ -15,10 +15,10 @@ class RoverTestShould {
     @Test
     public void init_the_rover_starting_Rover() {
         Grid grid = new Grid(4);
-        Rover rover_starting_at_x_1_y_1_direction_E = new Rover(new Point(1, 1), grid, Direction.getByChar('E'));
-        Rover rover_starting_at_x_1_y_2_direction_W = new Rover(new Point(1, 2), grid, Direction.getByChar('W'));
-        Rover rover_starting_at_x_2_y_1_direction_N = new Rover(new Point(2, 1), grid, Direction.getByChar('N'));
-        Rover rover_starting_at_x_1_y_1_direction_S = new Rover(new Point(1, 1), grid, Direction.getByChar('S'));
+        Rover rover_starting_at_x_1_y_1_direction_E = new Rover(new Point(1, 1), grid, Direction.East);
+        Rover rover_starting_at_x_1_y_2_direction_W = new Rover(new Point(1, 2), grid, Direction.West);
+        Rover rover_starting_at_x_2_y_1_direction_N = new Rover(new Point(2, 1), grid, Direction.North);
+        Rover rover_starting_at_x_1_y_1_direction_S = new Rover(new Point(1, 1), grid, Direction.South);
 
         assertEquals("1:1:E", rover_starting_at_x_1_y_1_direction_E.toString());
         assertEquals("1:2:W", rover_starting_at_x_1_y_2_direction_W.toString());
@@ -30,7 +30,7 @@ class RoverTestShould {
     public void throw_illegal_argument_error_when_commands_is_null() {
         char[] commands = null;
         final Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('E'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.East);
 
         assertThrows(NullPointerException.class,
                 () -> rover.receive(commands));
@@ -42,7 +42,7 @@ class RoverTestShould {
         char[] commands = new char[]{};
         final Grid grid = new Grid(4);
 
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('E'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.East);
         
         rover.receive(commands);
 
@@ -53,7 +53,7 @@ class RoverTestShould {
    public void move_forward_when_direction_is_East() {
         char[] commands = new char[]{'f'};
         Grid grid =  new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('E'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.East);
         
         rover.receive(commands);
 
@@ -64,7 +64,7 @@ class RoverTestShould {
     public void move_forward_when_direction_is_West() {
         char[] commands = new char[]{'f'};
        final Grid grid = new Grid(4);
-       Rover rover = new Rover(new Point(2, 1), grid, Direction.getByChar('W'));
+       Rover rover = new Rover(new Point(2, 1), grid, Direction.West);
 
         rover.receive(commands);
 
@@ -75,7 +75,7 @@ class RoverTestShould {
     public void move_forward_when_direction_is_South() {
         char[] commands = new char[]{'f'};
         final Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 2), grid, Direction.getByChar('S'));
+        Rover rover = new Rover(new Point(1, 2), grid, Direction.South);
 
         rover.receive(commands);
 
@@ -86,7 +86,7 @@ class RoverTestShould {
     public void move_forward_when_direction_is_North() {
         char[] commands = new char[]{'f'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('N'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.North);
         
         rover.receive(commands);
 
@@ -97,7 +97,7 @@ class RoverTestShould {
     public void move_backward_when_direction_is_East() {
         char[] commands = new char[]{'b'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(2, 1), grid, Direction.getByChar('E'));
+        Rover rover = new Rover(new Point(2, 1), grid, Direction.East);
         
         rover.receive(commands);
 
@@ -108,7 +108,7 @@ class RoverTestShould {
     public void move_backward_when_direction_is_West() {
         char[] commands = new char[]{'b'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('W'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.West);
         
         rover.receive(commands);
 
@@ -119,7 +119,7 @@ class RoverTestShould {
     public void move_backward_when_direction_is_South() {
         char[] commands = new char[]{'b'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('S'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.South);
         
         rover.receive(commands);
 
@@ -130,7 +130,7 @@ class RoverTestShould {
     public void move_backward_when_direction_is_North() {
         char[] commands = new char[]{'b'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 2), grid, Direction.getByChar('N'));
+        Rover rover = new Rover(new Point(1, 2), grid, Direction.North);
         
         rover.receive(commands);
 
@@ -141,7 +141,7 @@ class RoverTestShould {
     public void move_left_when_direction_is_East() {
         char[] commands = new char[]{'l'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('E'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.East);
 
         rover.receive(commands);
 
@@ -152,7 +152,7 @@ class RoverTestShould {
     public void move_left_when_direction_is_West() {
         char[] commands = new char[]{'l'};
         final Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('W'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.West);
 
         rover.receive(commands);
 
@@ -163,7 +163,7 @@ class RoverTestShould {
     public void move_left_when_direction_is_South() {
         char[] commands = new char[]{'l'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('S'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.South);
 
         rover.receive(commands);
 
@@ -174,7 +174,7 @@ class RoverTestShould {
     public void move_left_when_direction_is_North() {
         char[] commands = new char[]{'l'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('N'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.North);
 
         rover.receive(commands);
 
@@ -185,7 +185,7 @@ class RoverTestShould {
     public void move_right_when_direction_is_East() {
         char[] commands = new char[]{'r'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('E'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.East);
 
         rover.receive(commands);
 
@@ -196,7 +196,7 @@ class RoverTestShould {
     public void move_right_when_direction_is_West() {
         char[] commands = new char[]{'r'};
         Grid grid =  new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('W'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.West);
 
         rover.receive(commands);
 
@@ -207,7 +207,7 @@ class RoverTestShould {
     public void move_right_when_direction_is_South() {
         char[] commands = new char[]{'r'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('S'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.South);
 
         rover.receive(commands);
 
@@ -218,7 +218,7 @@ class RoverTestShould {
     public void move_right_when_direction_is_North() {
         char[] commands = new char[]{'r'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('N'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.North);
 
         rover.receive(commands);
 
@@ -229,7 +229,7 @@ class RoverTestShould {
     public void wrap_at_West_edge() {
         char[] commands = new char[]{'f'};
         final Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('W'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.West);
 
         rover.receive(commands);
 
@@ -240,7 +240,7 @@ class RoverTestShould {
     public void wrap_at_East_edge() {
         char[] commands = new char[]{'f'};
         final Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(4, 1), grid, Direction.getByChar('E'));
+        Rover rover = new Rover(new Point(4, 1), grid, Direction.East);
 
         rover.receive(commands);
 
@@ -251,7 +251,7 @@ class RoverTestShould {
     public void wrap_at_North_edge() {
         char[] commands = new char[]{'f'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 4), grid, Direction.getByChar('N'));
+        Rover rover = new Rover(new Point(1, 4), grid, Direction.North);
 
         rover.receive(commands);
 
@@ -262,7 +262,7 @@ class RoverTestShould {
     public void wrap_at_South_edge() {
         char[] commands = new char[]{'f'};
         Grid grid = new Grid(4);
-        Rover rover = new Rover(new Point(1, 1), grid, Direction.getByChar('S'));
+        Rover rover = new Rover(new Point(1, 1), grid, Direction.South);
 
         rover.receive(commands);
 
@@ -274,7 +274,7 @@ class RoverTestShould {
         char[] commands = new char[]{'f'};
         Point[] obstacles = new Point[]{new Point(2, 4), new Point(3, 2)};
         final Grid grid = new Grid(4, obstacles);
-        Rover rover = new Rover(new Point(2, 1), grid, Direction.getByChar('S'));
+        Rover rover = new Rover(new Point(2, 1), grid, Direction.South);
         
         Throwable exception = assertThrows(RuntimeException.class,
                 () -> rover.receive(commands));
@@ -286,7 +286,7 @@ class RoverTestShould {
         char[] commands = new char[]{'b'};
         Point[] obstacles = new Point[]{new Point(2, 3), new Point(3, 2)};
         Grid grid  = new Grid(4, obstacles);
-        Rover rover = new Rover(new Point(2, 2), grid, Direction.getByChar('S'));
+        Rover rover = new Rover(new Point(2, 2), grid, Direction.South);
 
         Throwable exception = assertThrows(RuntimeException.class,
                 () -> rover.receive(commands));
@@ -298,7 +298,7 @@ class RoverTestShould {
         char[] commands = new char[]{'b'};
         Point[] obstacles = new Point[]{new Point(2, 4), new Point(3, 2)};
         Grid grid = new Grid(4, obstacles);
-        Rover rover = new Rover(new Point(4, 2), grid, Direction.getByChar('E'));
+        Rover rover = new Rover(new Point(4, 2), grid, Direction.East);
 
         Throwable exception = assertThrows(RuntimeException.class,
                 () -> rover.receive(commands));
@@ -311,7 +311,7 @@ class RoverTestShould {
         char[] commands = new char[]{'f'};
         Point[] obstacles = new Point[]{new Point(2, 4)};
         final Grid grid = new Grid(4, obstacles);
-        Rover rover = new Rover(new Point(2, 1), grid, Direction.getByChar('S'));
+        Rover rover = new Rover(new Point(2, 1), grid, Direction.South);
 
         assertThrows(RuntimeException.class,
                 () -> rover.receive(commands));
@@ -322,7 +322,7 @@ class RoverTestShould {
     public void validate_point_in_interval_between_one_to_capacity() {
         final Grid grid = new Grid(4);
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class,
-                () -> new Rover(new Point(5, 1), grid, Direction.getByChar('S')));
+                () -> new Rover(new Point(5, 1), grid, Direction.South));
         assertEquals("Point(x,y) must be in range [1,4]",illegalArgumentException.getMessage());
 
     }
