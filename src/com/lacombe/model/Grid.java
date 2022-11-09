@@ -3,14 +3,14 @@ package src.com.lacombe.model;
 import java.util.*;
 
 public class Grid {
-    public static Set<GridCell> cells;
+    public  Set<GridCell> cells;
 
     public Grid(int size, Point ...obstaclePoints) {
         this.cells = new HashSet<>();
         initGrid(size, obstaclePoints);
     }
 
-    public static Point incrementY(Point point, int increment) {
+    public Point incrementY(Point point, int increment) {
         if(isIntSuperiorThanWidth(point.y() + increment))
             return new Point(point.x(), increment);
         if(isNumberEqualToZero(point.y() + increment))
@@ -18,7 +18,7 @@ public class Grid {
         return new Point(point.x(), point.y()+ increment);
     }
 
-    public static Point incrementX(Point point, int increment) {
+    public Point incrementX(Point point, int increment) {
         if(isIntSuperiorThanWidth(point.x() + increment))
             return new Point(1,point.y());
         if(isNumberEqualToZero(point.x() + increment))
@@ -26,15 +26,15 @@ public class Grid {
         return new Point(point.x()+increment,point.y());
     }
 
-    private static boolean isNumberEqualToZero(int number) {
+    private boolean isNumberEqualToZero(int number) {
         return number == 0;
     }
 
-    private static boolean isIntSuperiorThanWidth(int number) {
+    private  boolean isIntSuperiorThanWidth(int number) {
         return number > getWidth();
     }
 
-    public static int getWidth() {
+    public int getWidth() {
         return (int)Math.sqrt(cells.size());
     }
 

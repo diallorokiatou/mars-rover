@@ -19,13 +19,13 @@ public enum Direction {
         }
 
         @Override
-        public Position moveForward(Point point) {
-            return new Position(Grid.incrementY(point,1), this);
+        public Position moveForward(Point point, Grid grid) {
+            return new Position(grid.incrementY(point,1), this);
         }
 
         @Override
-        public Position moveBackward(Point point) {
-            return new Position(Grid.incrementY(point,-1), this);
+        public Position moveBackward(Point point, Grid grid) {
+            return new Position(grid.incrementY(point,-1), this);
         }
     },
     South('S'){
@@ -40,13 +40,13 @@ public enum Direction {
         }
 
         @Override
-        public Position moveForward(Point point) {
-            return new Position(Grid.incrementY(point,-1), this);
+        public Position moveForward(Point point, Grid grid) {
+            return new Position(grid.incrementY(point,-1), this);
         }
 
         @Override
-        public Position moveBackward(Point point) {
-            return new Position(Grid.incrementY(point,1), this);
+        public Position moveBackward(Point point, Grid grid) {
+            return new Position(grid.incrementY(point,1), this);
         }
     },
     East('E') {
@@ -61,14 +61,14 @@ public enum Direction {
         }
 
         @Override
-        public Position moveForward(Point point) {
-            return new Position(Grid.incrementX(point, 1), this);
+        public Position moveForward(Point point, Grid grid) {
+            return new Position(grid.incrementX(point, 1), this);
 
         }
 
         @Override
-        public Position moveBackward(Point point) {
-            return new Position(Grid.incrementX(point,-1), this);
+        public Position moveBackward(Point point, Grid grid) {
+            return new Position(grid.incrementX(point,-1), this);
         }
     },
     West('W') {
@@ -83,14 +83,13 @@ public enum Direction {
         }
 
         @Override
-        public Position moveForward(Point point) {
-            return new Position(Grid.incrementX(point,-1), this);
-
+        public Position moveForward(Point point, Grid grid) {
+            return new Position(grid.incrementX(point,-1), this);
         }
 
         @Override
-        public Position moveBackward(Point point) {
-            return new Position(Grid.incrementX(point,1), this);
+        public Position moveBackward(Point point, Grid grid) {
+            return new Position(grid.incrementX(point,1), this);
         }
     };
 
@@ -112,9 +111,9 @@ public enum Direction {
 
     public abstract Direction turnRight();
 
-    public abstract Position moveForward(Point point);
+    public abstract Position moveForward(Point point, Grid grid);
 
-    public abstract Position moveBackward(Point point);
+    public abstract Position moveBackward(Point point, Grid grid);
 
     @Override
     public String toString() {

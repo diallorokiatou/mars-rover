@@ -18,7 +18,7 @@ public class Commands {
 
     public Position execute(Position position, Grid grid){
         for (Command command : commands) {
-            Position nextPosition = command.execute(position);
+            Position nextPosition = command.execute(position, grid);
             if (grid.hasObstacleAt(nextPosition.point()))
                 throw new RuntimeException("An obstacle is detected at position " + nextPosition.point() + "; The current position is " + position);
             position = nextPosition;
