@@ -37,10 +37,6 @@ public record Point(int x, int y, int capacity){
         return number > capacity;
     }
 
-    public boolean isLessOrEqualToCapacity() {
-        return x <= capacity && y <= capacity;
-    }
-
     @Override
     public String toString() {
         return x + ":" + y;
