@@ -54,7 +54,7 @@ public class Grid {
 
     public Point pointAt(int x, int y){
         Point point = new Point(x, y);
-        return cells.stream().filter(cell -> cell.point.equals(point)).findAny().orElseThrow().point;
+        return cells.stream().filter(cell -> cell.point.equals(point)).findFirst().orElseThrow().point;
     }
 
     private List<Point> toList(Point ...obstaclePoints) {

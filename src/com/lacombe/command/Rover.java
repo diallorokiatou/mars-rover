@@ -12,7 +12,7 @@ public class Rover {
 
     public Rover(Point point, char direction, Grid grid) {
         this.grid = grid;
-        if(!grid.contain(point))
+        if(grid.contains(point))
             throw new IllegalArgumentException("Point(x,y) must be in range [1," + grid.getWidth() + "]");
         this.position = new Position(point, Direction.getByChar(direction));
     }
