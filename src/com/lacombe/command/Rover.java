@@ -21,7 +21,6 @@ public class Rover {
             throw new NullPointerException("commands can't be null");
         Commands commands = new Commands(commandList);
         position = commands.execute(position, grid);
-
     }
 
     @Override

@@ -1,20 +1,45 @@
 package src.com.lacombe.model;
 
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Grid {
-    public Set<Point> obstacles;
+    public Set<GridCell> cells;
     int size;
 
     public Grid(int size, Point ...obstaclePoints) {
         this.size = size;
-        obstacles = Arrays.stream(obstaclePoints).filter(Point::isLessOrEqualToCapacity).collect(Collectors.toSet());
+        this.cells = new HashSet<>(size);
+        init();
+        for(Point point : obstaclePoints){
+            setObstacleAt(point);
+        }
     }
 
+    private void init() {
+        for(int i = 1; i <= size; i++){
+            for(int j = 1; j <= size; j++){
+                Point point = new Point(i, j, size);
+                cells.add(new GridCell(point));
+            }
+        }
+    }
+
+    public void setObstacleAt(Point point){
+        for(GridCell cell : cells){
+            if(cell.point.equals(point)){
+                cell.setObstacle();
+                return;
+            }
+        }
+    }
     public boolean hasObstacleAt(Point point){
-        return obstacles.contains(point);
+       for(GridCell cell : cells){
+            if(cell.point.equals(point)){
+                return cell.hasObstacle;
+            }
+        }
+        return false;
     }
 
     public int getSize() {
