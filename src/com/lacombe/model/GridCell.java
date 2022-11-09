@@ -1,7 +1,5 @@
 package src.com.lacombe.model;
 
-import java.util.Objects;
-
 public class GridCell {
     private final Point point;
     private boolean hasObstacle;
@@ -11,11 +9,11 @@ public class GridCell {
         this.hasObstacle = false;
     }
 
-    public Point getPoint() {
+    public Point point() {
         return point;
     }
 
-    public boolean isHasObstacle() {
+    public boolean hasObstacle() {
         return hasObstacle;
     }
 
@@ -23,16 +21,8 @@ public class GridCell {
         hasObstacle = true;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        GridCell gridCell = (GridCell) o;
-        return hasObstacle == Objects.equals(point, gridCell.point);
+    public boolean sameAs(Point point) {
+        return this.point.equals(point);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(point, hasObstacle);
-    }
 }
