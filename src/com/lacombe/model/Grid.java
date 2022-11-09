@@ -6,18 +6,16 @@ import java.util.stream.Collectors;
 
 public class Grid {
     public Set<GridCell> cells;
-    int size;
 
     public Grid(int size, Point ...obstaclePoints) {
-        this.size = size;
-        this.cells = new HashSet<>(size);
-        init();
+        this.cells = new HashSet<>();
+        init(size);
         for(Point point : obstaclePoints){
             setObstacleAt(point);
         }
     }
 
-    private void init() {
+    private void init(int size) {
         for(int i = 1; i <= size; i++){
             for(int j = 1; j <= size; j++){
                 Point point = new Point(i, j, size);
@@ -35,7 +33,7 @@ public class Grid {
         return cells.stream().anyMatch(cell -> cell.point.equals(point) && cell.hasObstacle);
     }
 
-    public int getSize() {
-        return size;
+    public int getWidth() {
+        return (int)Math.sqrt(cells.size());
     }
 }

@@ -12,7 +12,7 @@ public class Rover {
 
     public Rover(int x, int y, char direction, Grid grid) {
         this.grid = grid;
-        Point point = new Point(x, y, grid.getSize());
+        Point point = new Point(x, y, grid.getWidth());
         this.position = new Position(point, Direction.getByChar(direction));
     }
 
