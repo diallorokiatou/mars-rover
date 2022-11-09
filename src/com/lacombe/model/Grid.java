@@ -7,12 +7,16 @@ public class Grid {
 
     public Grid(int size, Point ...obstaclePoints) {
         this.cells = new HashSet<>();
-        List<Point> obtaclesList = toList(obstaclePoints);
+        initGrid(size, obstaclePoints);
+    }
+
+    private void initGrid(int size, Point[] obstaclePoints) {
+        List<Point> obstaclesList = toList(obstaclePoints);
         for(int i = 1; i <= size; i++){
             for(int j = 1; j <= size; j++){
                 Point point = new Point(i, j, size);
                 GridCell gridCell = new GridCell(point);
-                if(obtaclesList.contains(point)) {
+                if(obstaclesList.contains(point)) {
                     gridCell.setObstacle();
                 }
                 cells.add(gridCell);
