@@ -34,12 +34,7 @@ public class Grid {
         }
     }
     public boolean hasObstacleAt(Point point){
-       for(GridCell cell : cells){
-            if(cell.point.equals(point)){
-                return cell.hasObstacle;
-            }
-        }
-        return false;
+        return cells.stream().anyMatch(cell -> cell.point.equals(point) && cell.hasObstacle);
     }
 
     public int getSize() {
