@@ -7,7 +7,7 @@ import src.com.lacombe.model.Point;
 import src.com.lacombe.model.Position;
 
 public class Rover {
-    public Grid grid;
+    Grid grid;
     Position position;
 
     public Rover(int x, int y, char direction, Grid grid) {
