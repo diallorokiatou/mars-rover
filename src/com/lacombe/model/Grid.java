@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 
 public class Grid {
     public Set<Point> obstacles;
-    int capacity;
+    int size;
 
-    public Grid(int capacity, Point ...obstaclePoints) {
-        this.capacity = capacity;
+    public Grid(int size, Point ...obstaclePoints) {
+        this.size = size;
         obstacles = Arrays.stream(obstaclePoints).filter(Point::isLessOrEqualToCapacity).collect(Collectors.toSet());
     }
 
@@ -17,7 +17,7 @@ public class Grid {
         return obstacles.contains(point);
     }
 
-    public int getCapacity() {
-        return capacity;
+    public int getSize() {
+        return size;
     }
 }
