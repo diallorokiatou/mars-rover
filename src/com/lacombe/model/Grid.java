@@ -12,18 +12,18 @@ public class Grid {
 
     public Point incrementY(Point point, int increment){
         if(isNumberSuperiorThanWidth(point.y() + increment))
-            return new Point(point.x(), increment);
+            return pointAt(point.x(), increment);
         if(isNumberEqualToZero(point.y() + increment))
-            return new Point(point.x(), getWidth());
-        return new Point(point.x(), point.y()+ increment);
+            return pointAt(point.x(), getWidth());
+        return pointAt(point.x(), point.y()+ increment);
     }
 
     public Point incrementX(Point point, int increment) {
         if(isNumberSuperiorThanWidth(point.x() + increment))
-            return new Point(1,point.y());
+            return pointAt(1, point.y());
         if(isNumberEqualToZero(point.x() + increment))
-            return new Point(getWidth(),point.y());
-        return new Point(point.x()+increment,point.y());
+            return pointAt(getWidth(), point.y());
+        return pointAt(point.x()+increment, point.y());
     }
 
     private boolean isNumberEqualToZero(int number) {
@@ -52,6 +52,11 @@ public class Grid {
         }
     }
 
+    public Point pointAt(int x, int y){
+        Point point = new Point(x, y);
+        return cells.stream().filter(cell -> cell.point.equals(point)).findAny().orElseThrow().point;
+    }
+
     private List<Point> toList(Point ...obstaclePoints) {
         if(obstaclePoints == null) return Collections.emptyList();
         return  Arrays.asList(obstaclePoints);
@@ -61,7 +66,7 @@ public class Grid {
         return cells.stream().anyMatch(cell -> cell.point.equals(point) && cell.hasObstacle);
     }
 
-    public boolean contain(Point point) {
-        return cells.stream().anyMatch(gridCell -> gridCell.point.equals(point));
+    public boolean contains(Point point) {
+        return cells.stream().noneMatch(gridCell -> gridCell.point.equals(point));
     }
 }
