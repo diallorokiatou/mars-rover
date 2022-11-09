@@ -21,7 +21,7 @@ public class GridCell {
         hasObstacle = true;
     }
 
-    public boolean sameAs(Point point) {
+    public boolean contains(Point point) {
         return this.point.equals(point);
     }
 

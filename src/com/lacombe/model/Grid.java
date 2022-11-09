@@ -39,7 +39,7 @@ public class Grid {
 
     public Point pointAt(int x, int y){
         Point point = new Point(wrapEdges(x), wrapEdges(y));
-        return cells.stream().filter(cell -> cell.sameAs(point)).findFirst().orElseThrow().point();
+        return cells.stream().filter(cell -> cell.contains(point)).findFirst().orElseThrow().point();
     }
 
     private List<Point> toList(Point ...obstaclePoints) {
@@ -48,11 +48,11 @@ public class Grid {
     }
 
     public boolean hasObstacleAt(Point point){
-        return cells.stream().anyMatch(cell -> cell.sameAs(point) && cell.hasObstacle());
+        return cells.stream().anyMatch(cell -> cell.contains(point) && cell.hasObstacle());
     }
 
     public boolean contains(Point point) {
-        return cells.stream().noneMatch(gridCell -> gridCell.sameAs(point));
+        return cells.stream().noneMatch(gridCell -> gridCell.contains(point));
     }
 
     public Point moveForward(Point point, Direction direction) {
