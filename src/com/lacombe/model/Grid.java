@@ -10,8 +10,8 @@ public class Grid {
         initGrid(size, obstaclePoints);
     }
 
-    public Point incrementY(Point point, int increment) {
-        if(isIntSuperiorThanWidth(point.y() + increment))
+    public Point incrementY(Point point, int increment){
+        if(isNumberSuperiorThanWidth(point.y() + increment))
             return new Point(point.x(), increment);
         if(isNumberEqualToZero(point.y() + increment))
             return new Point(point.x(), getWidth());
@@ -19,7 +19,7 @@ public class Grid {
     }
 
     public Point incrementX(Point point, int increment) {
-        if(isIntSuperiorThanWidth(point.x() + increment))
+        if(isNumberSuperiorThanWidth(point.x() + increment))
             return new Point(1,point.y());
         if(isNumberEqualToZero(point.x() + increment))
             return new Point(getWidth(),point.y());
@@ -30,7 +30,7 @@ public class Grid {
         return number == 0;
     }
 
-    private  boolean isIntSuperiorThanWidth(int number) {
+    private  boolean isNumberSuperiorThanWidth(int number) {
         return number > getWidth();
     }
 
