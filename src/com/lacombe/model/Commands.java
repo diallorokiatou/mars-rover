@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Commands {
 
-    List<Command> commands;
+    final List<Command> commands;
 
     public Commands(char[] commandCharArray) {
         commands = new ArrayList<>();

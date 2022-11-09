@@ -43,17 +43,17 @@ public class Grid {
         for(int i = 1; i <= size; i++){
             for(int j = 1; j <= size; j++){
                 Point point = new Point(i, j);
-                GridCell gridCell = new GridCell(point);
+                GridCell cell = new GridCell(point);
                 if(obstaclesList.contains(point))
-                    gridCell.makeImpassable();
-                cells.add(gridCell);
+                    cell.makeImpassable();
+                cells.add(cell);
             }
         }
     }
 
     public Point pointAt(int x, int y){
         Point point = new Point(x, y);
-        return cells.stream().filter(cell -> cell.point.equals(point)).findFirst().orElseThrow().point;
+        return cells.stream().filter(cell -> cell.getPoint().equals(point)).findFirst().orElseThrow().getPoint();
     }
 
     private List<Point> toList(Point ...obstaclePoints) {
@@ -62,10 +62,10 @@ public class Grid {
     }
 
     public boolean hasObstacleAt(Point point){
-        return cells.stream().anyMatch(cell -> cell.point.equals(point) && cell.hasObstacle);
+        return cells.stream().anyMatch(cell -> cell.getPoint().equals(point) && cell.isHasObstacle());
     }
 
     public boolean contains(Point point) {
-        return cells.stream().noneMatch(gridCell -> gridCell.point.equals(point));
+        return cells.stream().noneMatch(gridCell -> gridCell.getPoint().equals(point));
     }
 }
