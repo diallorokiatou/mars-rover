@@ -11,11 +11,11 @@ public record Position(Point point, Direction direction) {
     }
 
     public Position moveBackward(Grid grid) {
-        return direction.moveBackward(point, grid);
+        return new Position(grid.moveBackward(point, direction), direction);
     }
 
     public Position moveForward(Grid grid) {
-        return direction.moveForward(point, grid);
+        return new Position(grid.moveForward(point, direction), direction);
     }
 
     public Direction turnLeft() {

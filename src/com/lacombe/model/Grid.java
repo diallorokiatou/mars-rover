@@ -1,5 +1,7 @@
 package src.com.lacombe.model;
 
+import src.com.lacombe.Enum.Direction;
+
 import java.util.*;
 
 public class Grid {
@@ -8,22 +10,6 @@ public class Grid {
     public Grid(int size, Point ...obstaclePoints) {
         this.cells = new HashSet<>();
         initGrid(size, obstaclePoints);
-    }
-
-    public Point incrementY(Point point, int increment){
-        if(isNumberSuperiorThanWidth(point.y() + increment))
-            return pointAt(point.x(), increment);
-        if(isNumberEqualToZero(point.y() + increment))
-            return pointAt(point.x(), getWidth());
-        return pointAt(point.x(), point.y()+ increment);
-    }
-
-    public Point incrementX(Point point, int increment) {
-        if(isNumberSuperiorThanWidth(point.x() + increment))
-            return pointAt(1, point.y());
-        if(isNumberEqualToZero(point.x() + increment))
-            return pointAt(getWidth(), point.y());
-        return pointAt(point.x()+increment, point.y());
     }
 
     private boolean isNumberEqualToZero(int number) {
@@ -52,7 +38,7 @@ public class Grid {
     }
 
     public Point pointAt(int x, int y){
-        Point point = new Point(x, y);
+        Point point = new Point(wrapEdges(x), wrapEdges(y));
         return cells.stream().filter(cell -> cell.sameAs(point)).findFirst().orElseThrow().point();
     }
 
@@ -68,4 +54,23 @@ public class Grid {
     public boolean contains(Point point) {
         return cells.stream().noneMatch(gridCell -> gridCell.sameAs(point));
     }
+
+    public Point moveForward(Point point, Direction direction) {
+        Point nextPoint = direction.moveForward(point);
+        return pointAt(nextPoint.x(), nextPoint.y());
+    }
+
+    public Point moveBackward(Point point, Direction direction) {
+        Point nextPoint = direction.moveBackward(point);
+        return pointAt(nextPoint.x(), nextPoint.y());
+    }
+
+    public int wrapEdges(int number){
+        if(isNumberSuperiorThanWidth(number))
+            return 1;
+        if(isNumberEqualToZero(number))
+            return getWidth();
+        return number;
+    }
+
 }
