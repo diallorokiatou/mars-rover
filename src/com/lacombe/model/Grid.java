@@ -2,6 +2,7 @@ package src.com.lacombe.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Grid {
     public Set<GridCell> cells;
@@ -26,12 +27,9 @@ public class Grid {
     }
 
     public void setObstacleAt(Point point){
-        for(GridCell cell : cells){
-            if(cell.point.equals(point)){
-                cell.setObstacle();
-                return;
-            }
-        }
+        cells = cells.stream().peek(cell -> {
+                    if(cell.point.equals(point)) cell.setObstacle();
+                    }).collect(Collectors.toSet());
     }
     public boolean hasObstacleAt(Point point){
         return cells.stream().anyMatch(cell -> cell.point.equals(point) && cell.hasObstacle);
