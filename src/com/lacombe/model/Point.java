@@ -3,7 +3,6 @@ package src.com.lacombe.model;
 import java.util.Objects;
 
 public record Point(int x, int y, int capacity){
-
     public Point {
         if (!isPointIsWellDefine(x, y, capacity))
             throw new IllegalArgumentException("Point(x,y) must be in range [1," + capacity + "]");
