@@ -10,9 +10,10 @@ public class Rover {
     Grid grid;
     Position position;
 
-    public Rover(int x, int y, char direction, Grid grid) {
+    public Rover(Point point, char direction, Grid grid) {
         this.grid = grid;
-        Point point = new Point(x, y, grid.getWidth());
+        if(!grid.contain(point))
+            throw new IllegalArgumentException("Point(x,y) must be in range [1," + grid.getWidth() + "]");
         this.position = new Position(point, Direction.getByChar(direction));
     }
 
